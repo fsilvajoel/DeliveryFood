@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import Album from './pages/Home'
+// import SignInSide from './pages/Login'
+import SignUp from './pages/SignUp'
+import Review from './Components/CheckoutCart/Review'
+import Checkout from './Components/CheckoutCart/Checkout'
+// import './index.css';
+// import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Checkout/>
+    {/* <Review/> */}
+    {/* <Album /> */}
+    {/* <SignUp/> */}
+    {/* <SignUp/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
