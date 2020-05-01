@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Album from './pages/Home'
 // import SignInSide from './pages/Login'
+import CarrrouselCategories from './Components/CarouselCategories'
 import SignUp from './pages/SignUp'
 import Review from './Components/CheckoutCart/Review'
 import Checkout from './Components/CheckoutCart/Checkout'
@@ -11,7 +12,8 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Checkout/>
+    <CarrrouselCategories/>
+    {/* <Checkout/> */}
     {/* <Review/> */}
     {/* <Album /> */}
     {/* <SignUp/> */}

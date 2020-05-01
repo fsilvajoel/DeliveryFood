@@ -9,6 +9,7 @@ import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import PrimarySearchAppBar from "../Components/Toolbar";
 import CardProduct from "../Components/CardProduct";
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -62,8 +63,9 @@ export default function Album() {
   return (
     <Fragment>
       <CssBaseline />
-      <PrimarySearchAppBar />>
+      <PrimarySearchAppBar />
       <main>
+        
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
