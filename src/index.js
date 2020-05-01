@@ -1,23 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Album from './pages/Home'
-// import SignInSide from './pages/Login'
-import CarrrouselCategories from './Components/CarouselCategories'
-import SignUp from './pages/SignUp'
-import Review from './Components/CheckoutCart/Review'
-import Checkout from './Components/CheckoutCart/Checkout'
-// import './index.css';
-// import App from './App';
+import Routes from './routes'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CarrrouselCategories/>
-    {/* <Checkout/> */}
-    {/* <Review/> */}
-    {/* <Album /> */}
-    {/* <SignUp/> */}
-    {/* <SignUp/> */}
+     <Routes/>
   </React.StrictMode>,
   document.getElementById('root')
 );
