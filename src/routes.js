@@ -1,30 +1,24 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import App from "../../App";
+// import App from "../../App";
 
-import Album from "./pages/Home";
+import Home from "./pages/Home/Home";
 // import SignInSide from './pages/Login'
 // import CarrrouselCategories from "./Components/CarouselCategories";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/Login/SignUp";
 import Review from "./Components/CheckoutCart/Review";
 import Checkout from "./Components/CheckoutCart/Checkout";
 
 const routeList = [
   {
     path: "/",
-    component: Index,
+    component: Home,
     exact: true,
     private: false,
   },
   {
     path: "/SignUp",
     component: SignUp,
-    exact: true,
-    private: false,
-  },
-  {
-    path: "/Album",
-    component: Album,
     exact: true,
     private: false,
   },
@@ -45,7 +39,7 @@ const routeList = [
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" exact={true} component={App} />
+      <Route path="/" exact={true} component={Home} />
       {/* <Route path="/Technology" component={TechnologyPage} /> */}
       {/* <Route path="/Science" component={SciencePage} /> */}
       {/* <Route component={NotFound}/> */}

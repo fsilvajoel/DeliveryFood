@@ -7,8 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
-import PrimarySearchAppBar from "../Components/Toolbar";
-import CardProduct from "../Components/CardProduct";
+import PrimarySearchAppBar from "../../Components/Toolbar";
+import CardProduct from "../../Components/CardProduct";
 
 function Copyright() {
   return (
@@ -76,7 +76,7 @@ export default function Album() {
               color="textPrimary"
               gutterBottom
             >
-              Album layout
+              Home
             </Typography>
             <Typography
               variant="h5"
@@ -84,9 +84,7 @@ export default function Album() {
               color="textSecondary"
               paragraph
             >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+              Aqui será criada a pagina principal do sistema de delivery.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
