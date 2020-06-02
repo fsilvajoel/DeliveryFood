@@ -1,0 +1,84 @@
+{
+    "products" : [
+        {
+            "id" : "01",
+            "name" : "temaki salmao",
+            "slug" : "temaki salmao",
+            "description" : "descrição",
+            "price" : "12",
+            "avaliable" : true,
+            "category" : "temakis",
+            "img" : "https://source.unsplash.com/random"
+        },
+        {
+            "id" : "02",
+            "name" : " salmao",
+            "slug" : " salmao",
+            "description" : "descrição",
+            "price" : "122",
+            "avaliable" : true,
+            "category" : "peixe",
+            "img" : "https://images.unsplash.com/photo-1588279900770-dc6cd4b2f4f5?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
+        },
+        {
+            "id" : "03",
+            "name" : "molho",
+            "slug" : "molho",
+            "description" : "descrição",
+            "price" : "12",
+            "avaliable" : true,
+            "category" : "temakis",
+            "img" : "https://images.unsplash.com/photo-1429497612798-1f189166a08a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1600"
+        },
+        {
+            "id" : "04",
+            "name" : "temaki skin",
+            "slug" : "temakiskin",
+            "description" : "descrição",
+            "price" : "12",
+            "avaliable" : true,
+            "category" : "temaki",
+            "img" : "https://source.unsplash.com/random"
+        },
+        {
+            "id" : "05",
+            "name" : "combo camobi",
+            "slug" : "combo camobi",
+            "description" : "descrição",
+            "price" : "43,90",
+            "avaliable" : true,
+            "category" : "pratos",
+            "img" : "https://source.unsplash.com/random"
+        },
+        {
+            "id" : "06",
+            "name" : "temaki california",
+            "slug" : "temaki-california",
+            "description" : "descrição",
+            "price" : "12",
+            "avaliable" : true,
+            "category" : "temaki",
+            "img" : "https://source.unsplash.com/random"
+        },
+        {
+            "id" : "07",
+            "name" : "Heineken",
+            "slug" : "Heineken",
+            "description" : "descrição",
+            "price" : "9,02",
+            "avaliable" : true,
+            "category" : "Bebidas",
+            "img" : "https://source.unsplash.com/random"
+        },
+        {
+            "id" : "08",
+            "name" : "guarana",
+            "slug" : "guarana",
+            "description" : "descrição",
+            "price" : "2,90",
+            "avaliable" : true,
+            "category" : "Bebidas",
+            "img" : "https://source.unsplash.com/random"
+        }
+    ]
+}
