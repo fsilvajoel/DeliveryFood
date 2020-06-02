@@ -1,18 +1,29 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 // import App from "../../App";
-
 import Home from "./pages/Home/Home";
-// import SignInSide from './pages/Login'
-// import CarrrouselCategories from "./Components/CarouselCategories";
+import index from "./pages/index"
 import SignUp from "./pages/Login/SignUp";
-import Review from "./Components/CheckoutCart/Review";
+import Login from "./pages/Login/Login";
+import EntranceHub from "./pages/EntranceHub";
 import Checkout from "./Components/CheckoutCart/Checkout";
 
 const routeList = [
   {
     path: "/",
+    component: index,
+    exact: true,
+    private: false,
+  },
+  {
+    path: "/home",
     component: Home,
+    exact: true,
+    private: false,
+  },
+  {
+    path: "/login",
+    component: Login,
     exact: true,
     private: false,
   },
@@ -29,17 +40,28 @@ const routeList = [
     private: false,
   },
   {
-    path: "/Review",
-    component: Review,
+    path: "/EntranceHub",
+    component: EntranceHub,
     exact: true,
     private: false,
   },
 ];
 
+const RouteBuilder = route => {
+  return (
+      <Route
+        exact={!!route.exact}
+        path={route.path}
+        render={props => (<route.component {...props} />)} />
+  )
+  }
+  
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" exact={true} component={Home} />
+      {routeList.map((route, key) =><RouteBuilder key={key} {...route} />)}
+      {/* <Route path="/" exact={true} component={index} /> */}
+      {/* <Route path="/" exact={true} component={Home} /> */}
       {/* <Route path="/Technology" component={TechnologyPage} /> */}
       {/* <Route path="/Science" component={SciencePage} /> */}
       {/* <Route component={NotFound}/> */}
@@ -47,20 +69,3 @@ const Routes = () => (
   </BrowserRouter>
 );
 export default Routes;
-
-// const Routes = (props) => {
-//   return (
-//     <Switch>
-//       {routeList.map((route, key) => {
-//         if (!route.private) {
-//           return <RouteBuilder key={key} {...route} />;
-//         } else {
-//           return (
-//             <PrivateRoute key={key} {...route} component={route.component} />
-//           );
-//         }
-//       })}
-//       <Redirect from="*" to="/" />
-//     </Switch>
-//   );
-// };
