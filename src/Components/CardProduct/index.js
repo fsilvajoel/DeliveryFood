@@ -13,15 +13,15 @@ export default function CardProduct(props) {
     	<Card className={props.Name}>
       		<CardMedia
 				className={props.Media}
-				image="https://source.unsplash.com/random"
-				title="Image title"
+				image={props.image}
+				title={props.title}
 			/>
     	<CardContent className={props.Content}>
         <Typography gutterBottom variant="h5" component="h2">
-        	Heading
+          {props.title}
         </Typography>
         <Typography>
-        	This is a media card. You can use this section to describe the content.
+          {props.description}
         </Typography>
       </CardContent>
       <CardActions>
