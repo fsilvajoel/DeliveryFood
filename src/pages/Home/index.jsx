@@ -41,10 +41,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 	cardContent: {
 		flexGrow: 1,
+		textAlign: "center"
 	},
 	footer: {
 		backgroundColor: theme.palette.background.paper,
 		padding: theme.spacing(6),
+
 	},
 }));
 

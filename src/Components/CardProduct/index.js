@@ -24,12 +24,12 @@ export default function CardProduct(props) {
           {props.description}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions style={{justifyContent: "center"}}>
         <Button size="small" color="primary">
-          View
+          Ver
         </Button>
         <Button size="small" color="primary">
-          Edit
+          pedir
         </Button>
       </CardActions>
     </Card>
