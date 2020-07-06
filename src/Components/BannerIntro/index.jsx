@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { render } from '@testing-library/react';
+import logobanner from './promo.png'
 
 const useStyles = makeStyles((theme) => ({
 	heroContent: {

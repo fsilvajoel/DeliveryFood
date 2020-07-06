@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const cards = [1, 2, 3];
-
+const img = "https://img.stpu.com.br/?img=https://s3.amazonaws.com/pu-mgr/default/a0R0f00000ziqnWEAQ/5b646575e4b00eb04bfa85ea.jpg&w=710&h=462"
 export default function Album() {
   const classes = useStyles();
 
@@ -59,7 +59,7 @@ export default function Album() {
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Delivery Food
+              Sushibar Morita
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               Esta com fome? Encontre sua comida favorita!
@@ -67,9 +67,10 @@ export default function Album() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="">
+                  <Button link="/home" variant="contained" color="">
                     Explorar Produtos
                   </Button>
+                  <p>Dúvidas Frequentes</p>
                 </Grid>
                 {/* <Grid item>
                   <Button variant="outlined" color="primary">
@@ -88,7 +89,11 @@ export default function Album() {
           <Grid container spacing={4}>
             {cards.map((card) => (
                 <Grid item key={card} xs={12} sm={6} md={4}>
-                    <CardProduct image ='https://source.unsplash.com/random'/>
+                    {/* <CardProduct image ="https://source.unsplash.com/random"/> */}
+                    {/* <CardProduct image =""/> */}
+                    <CardProduct
+										image={img}
+									/>
                 </Grid>
             ))}
           </Grid>

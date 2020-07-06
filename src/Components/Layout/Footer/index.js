@@ -1,24 +1,12 @@
 import React from "react"
-import Link from "@material-ui/core/Link";
+// import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
-
-function Copyright() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {"Copyright © "}
-        <Link color="inherit" href="https://material-ui.com/">
-          Your Website
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  }
+import Copyright from '../Copyright'
 
 const Footer =() =>(
     <footer>
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          DeliveryFood
         </Typography>
         <Typography
           variant="subtitle1"
@@ -26,7 +14,8 @@ const Footer =() =>(
           color="textSecondary"
           component="p"
         >
-          Something here to give the footer a purpose!
+          "Quando sentir que a vida está fora de foco, volte ao básico. Respire."
+          <Typography variant="subtitle2">Sr Miyagi</Typography>
         </Typography>
         <Copyright />
       </footer>

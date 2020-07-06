@@ -15,6 +15,7 @@ import CardProduct from "../../Components/CardProduct";
 import Footer from "./../../Components/Layout/Footer"
 import CarouselCategories from "./../../Components/CarouselCategories"
 import BannerIntro from "./../../Components/BannerIntro"
+import Tab from "./../../Components/Layout/Tab"
 
 const useStyles = makeStyles((theme) => ({
 	icon: {
@@ -72,9 +73,10 @@ export default function ListProducts(){
 				<CssBaseline />
 				<PrimarySearchAppBar />
 				<main>
-					<CarouselCategories />
+					<Tab/>
+					{/* <CarouselCategories /> */}
 					{/* Hero unit */}
-					<BannerIntro/>
+					{/* <BannerIntro/> */}
 					<Container className={classes.cardGrid} maxWidth="md">
 						{/* End hero unit */}
 						<Grid container spacing={4}>								
