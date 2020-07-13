@@ -2,10 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './routes'
 import * as serviceWorker from './serviceWorker';
-import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 // import { createMuiTheme } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
 
 const theme = createMuiTheme({
   palette: {
