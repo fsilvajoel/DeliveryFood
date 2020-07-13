@@ -11,9 +11,11 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
+import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -58,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingLeft: `calc(1em + ${theme.spacing(6)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
@@ -111,12 +113,16 @@ export default function PrimarySearchAppBar() {
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
       onClose={handleMenuClose}
+      open={isMenuOpen}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
     >
-      <MenuItem onClick={handleMenuClose}>perfil</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Minha conta</MenuItem>
+      <Link to="/pedidos">
+        <MenuItem>Pedidos</MenuItem>
+      </Link>
+      <Link to="/account"> 
+        <MenuItem onClick={handleMenuClose}>Editar Dados</MenuItem>
+      </Link>
       <MenuItem onClick={handleMenuClose}>Sair</MenuItem>
     </Menu>
   );
@@ -128,21 +134,19 @@ export default function PrimarySearchAppBar() {
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
+      open={isMobileMenuOpen}
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
+        <IconButton
+          aria-label="show 11 new notifications"
+          color="inherit"
+        >
+          <Badge
+            badgeContent={11}
+            color="secondary"
+          >
             <NotificationsIcon />
           </Badge>
         </IconButton>
@@ -150,9 +154,9 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
-          aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
+          aria-label="account of current user"
           color="inherit"
         >
           <AccountCircle />
@@ -167,14 +171,18 @@ export default function PrimarySearchAppBar() {
       <AppBar position="static">
         <Toolbar>
           <IconButton
-            edge="start"
+            aria-label="open drawer"
             className={classes.menuButton}
             color="inherit"
-            aria-label="open drawer"
+            edge="start"
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography
+            className={classes.title}
+            noWrap
+            variant="h6"
+          >
             DeliveryFood
           </Typography>
           <div className={classes.search}>
@@ -182,45 +190,54 @@ export default function PrimarySearchAppBar() {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Pesquisar"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              placeholder="Pesquisar"
             />
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
+            <IconButton
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
+              Endereço
+              <RoomOutlinedIcon />
             </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
+            <IconButton
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
               Sacola
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+              <Badge
+                badgeContent={3}
+                color="secondary"
+              >
+                <LocalMallOutlinedIcon />
               </Badge>
             </IconButton>
             <IconButton
-              edge="end"
-              aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              aria-label="account of current user"
               color="inherit"
+              edge="end"
+              onClick={handleProfileMenuOpen}
             >
+              Perfil 
               <AccountCircle />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
-              aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
+              aria-label="show more"
               color="inherit"
+              onClick={handleMobileMenuOpen}
             >
               <MoreIcon />
             </IconButton>

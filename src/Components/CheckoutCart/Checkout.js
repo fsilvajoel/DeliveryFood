@@ -14,18 +14,6 @@ import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -94,19 +82,34 @@ export default function Checkout() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="absolute" color="default" className={classes.appBar}>
+      <AppBar
+        className={classes.appBar}
+        color="default"
+        position="absolute"
+      >
         <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
+          <Typography
+            color="inherit"
+            noWrap
+            variant="h6"
+          >
             Company name
           </Typography>
         </Toolbar>
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-          <Typography component="h1" variant="h4" align="center">
+          <Typography
+            align="center"
+            component="h1"
+            variant="h4"
+          >
             Checkout
           </Typography>
-          <Stepper activeStep={activeStep} className={classes.stepper}>
+          <Stepper
+            activeStep={activeStep}
+            className={classes.stepper}
+          >
             {steps.map((label) => (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
@@ -116,7 +119,10 @@ export default function Checkout() {
           <React.Fragment>
             {activeStep === steps.length ? (
               <React.Fragment>
-                <Typography variant="h5" gutterBottom>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                >
                   Thank you for your order.
                 </Typography>
                 <Typography variant="subtitle1">
@@ -129,15 +135,18 @@ export default function Checkout() {
                 {getStepContent(activeStep)}
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
+                    <Button
+                      className={classes.button}
+                      onClick={handleBack}
+                    >
                       Back
                     </Button>
                   )}
                   <Button
-                    variant="contained"
+                    className={classes.button}
                     color="primary"
                     onClick={handleNext}
-                    className={classes.button}
+                    variant="contained"
                   >
                     {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                   </Button>
@@ -146,7 +155,6 @@ export default function Checkout() {
             )}
           </React.Fragment>
         </Paper>
-        <Copyright />
       </main>
     </React.Fragment>
   );
