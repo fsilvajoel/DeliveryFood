@@ -112,5 +112,84 @@
             "category" : "temakis",
             "img" : "https://images.unsplash.com/photo-1580372648129-cb82ef5f1052?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1600"
         }
+    ],
+    "Pedidos" :[
+      [{
+        "id": 1,
+        "Status": "Criado",
+        "Total": 81.28,
+        "Data": "01/02/2020"
+      }, {
+        "id": 2,
+        "Status": "Criado",
+        "Total": 93.55,
+        "Data": "25/09/2019"
+      }, {
+        "id": 3,
+        "Status": "Criado",
+        "Total": 48.91,
+        "Data": "13/02/2020"
+      }, {
+        "id": 4,
+        "Status": "entregue",
+        "Total": 94.36,
+        "Data": "13/10/2019"
+      }, {
+        "id": 5,
+        "Status": "entregue",
+        "Total": 48.57,
+        "Data": "22/10/2019"
+      }, {
+        "id": 6,
+        "Status": "entregue",
+        "Total": 47.09,
+        "Data": "12/09/2019"
+      }, {
+        "id": 7,
+        "Status": "Criado",
+        "Total": 27.23,
+        "Data": "02/03/2020"
+      }, {
+        "id": 8,
+        "Status": "Criado",
+        "Total": 65.94,
+        "Data": "07/01/2020"
+      }, {
+        "id": 9,
+        "Status": "Criado",
+        "Total": 78.1,
+        "Data": "25/10/2019"
+      }, {
+        "id": 10,
+        "Status": "entregue",
+        "Total": 32.08,
+        "Data": "17/05/2020"
+      }, {
+        "id": 11,
+        "Status": "entregue",
+        "Total": 69.48,
+        "Data": "31/08/2019"
+      }, {
+        "id": 12,
+        "Status": "entregue",
+        "Total": 78.86,
+        "Data": "29/12/2019"
+      }, {
+        "id": 13,
+        "Status": "entregue",
+        "Total": 85.92,
+        "Data": "14/04/2020"
+      }, {
+        "id": 14,
+        "Status": "entregue",
+        "Total": 68.6,
+        "Data": "30/06/2020"
+      }, {
+        "id": 15,
+        "Status":  "entregue",
+        "Total": 73.47,
+        "Data": "25/05/2020"
+      }]
+
     ]
 }
