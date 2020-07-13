@@ -1,47 +1,60 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // import App from "../../App";
-import Home from "./pages/Home/";
-import index from "./pages/index"
-import SignUp from "./pages/Login/SignUp";
-import Login from "./pages/Login/Login";
-import EntranceHub from "./pages/EntranceHub";
-import Checkout from "./Components/CheckoutCart/Checkout";
-
+import Home from './pages/Home/';
+import index from './pages/index'
+import SignUp from './pages/Login/SignUp';
+import Login from './pages/Login/Login';
+import EntranceHub from './pages/EntranceHub';
+import Checkout from './Components/CheckoutCart/Checkout';
+import Pedidos from  './pages/Profile/pedidos'
+import Account from  './pages/Profile/account'
 const routeList = [
   {
-    path: "/",
+    path: '/',
     component: index,
     exact: true,
     private: false,
   },
   {
-    path: "/home",
+    path: '/home',
     component: Home,
     exact: true,
     private: false,
   },
   {
-    path: "/login",
+    path: '/login',
     component: Login,
     exact: true,
     private: false,
   },
   {
-    path: "/SignUp",
+    path: '/SignUp',
     component: SignUp,
     exact: true,
     private: false,
   },
   {
-    path: "/Checkout",
+    path: '/Checkout',
     component: Checkout,
     exact: true,
     private: false,
   },
   {
-    path: "/EntranceHub",
+    path: '/EntranceHub',
     component: EntranceHub,
+    exact: true,
+    private: false,
+  },
+  {
+    path: '/pedidos',
+    component: Pedidos,
+    exact: true,
+    private: false,
+  },
+  {
+    path: '/account',
+    component: Account,
     exact: true,
     private: false,
   },
@@ -49,17 +62,21 @@ const routeList = [
 
 const RouteBuilder = route => {
   return (
-      <Route
-        exact={!!route.exact}
-        path={route.path}
-        render={props => (<route.component {...props} />)} />
+    <Route
+      exact={!!route.exact}
+      path={route.path}
+      render={props => (<route.component {...props} />)}
+    />
   )
-  }
+}
   
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      {routeList.map((route, key) =><RouteBuilder key={key} {...route} />)}
+      {routeList.map((route, key) =><RouteBuilder
+        key={key}
+        {...route}
+                                    />)}
       {/* <Route path="/" exact={true} component={index} /> */}
       {/* <Route path="/" exact={true} component={Home} /> */}
       {/* <Route path="/Technology" component={TechnologyPage} /> */}
