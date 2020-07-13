@@ -6,9 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import PrimarySearchAppBar from "../../Components/Layout/Toolbar";
-import CardProduct from "../../Components/CardProduct";
-import Footer from "./../../Components/Layout/Footer"
+import PrimarySearchAppBar from '../../Components/Layout/Toolbar';
+import CardProduct from '../../Components/CardProduct';
+import Footer from './../../Components/Layout/Footer'
 
 import banner from './images/banner.jfif'
 const useStyles = makeStyles((theme) => ({
@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     backgroundImage: `url(${banner})`,
-    backgroundPosition : "center",
-    backgroundRepeat: "no-repeat",
+    backgroundPosition : 'center',
+    backgroundRepeat: 'no-repeat',
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const cards = [1, 2, 3];
-const img = "https://img.stpu.com.br/?img=https://s3.amazonaws.com/pu-mgr/default/a0R0f00000ziqnWEAQ/5b646575e4b00eb04bfa85ea.jpg&w=710&h=462"
+const img = 'https://img.stpu.com.br/?img=https://s3.amazonaws.com/pu-mgr/default/a0R0f00000ziqnWEAQ/5b646575e4b00eb04bfa85ea.jpg&w=710&h=462'
 export default function Album() {
   const classes = useStyles();
 
@@ -58,16 +58,35 @@ export default function Album() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            <Typography
+              align="center"
+              color="textPrimary"
+              component="h1"
+              gutterBottom
+              variant="h2"
+            >
               Sushibar Morita
             </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            <Typography
+              align="center"
+              color="textSecondary"
+              paragraph
+              variant="h5"
+            >
               Esta com fome? Encontre sua comida favorita!
             </Typography>
             <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
+              <Grid
+                container
+                justify="center"
+                spacing={2}
+              >
                 <Grid item>
-                  <Button link="/home" variant="contained" color="">
+                  <Button
+                    color=""
+                    link="/home"
+                    variant="contained"
+                  >
                     Explorar Produtos
                   </Button>
                   <p>Dúvidas Frequentes</p>
@@ -81,20 +100,38 @@ export default function Album() {
             </div>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container
+          className={classes.cardGrid}
+          maxWidth="md"
+        >
           {/* End hero unit */}
-          <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+          <Typography
+            align="center"
+            color="textPrimary"
+            component="h1"
+            gutterBottom
+            variant="h2"
+          >
               Os mais pedidos:
-            </Typography>
-          <Grid container spacing={4}>
+          </Typography>
+          <Grid
+            container
+            spacing={4}
+          >
             {cards.map((card) => (
-                <Grid item key={card} xs={12} sm={6} md={4}>
-                    {/* <CardProduct image ="https://source.unsplash.com/random"/> */}
-                    {/* <CardProduct image =""/> */}
-                    <CardProduct
-										image={img}
-									/>
-                </Grid>
+              <Grid
+                item
+                key={card}
+                md={4}
+                sm={6}
+                xs={12}
+              >
+                {/* <CardProduct image ="https://source.unsplash.com/random"/> */}
+                {/* <CardProduct image =""/> */}
+                <CardProduct
+                  image={img}
+                />
+              </Grid>
             ))}
           </Grid>
         </Container>
