@@ -8,85 +8,133 @@ import Checkbox from '@material-ui/core/Checkbox';
 export default function AddressForm() {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography
+        gutterBottom
+        variant="h6"
+      >
         Shipping address
       </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+      <Grid
+        container
+        spacing={3}
+      >
+        <Grid
+          item
+          sm={6}
+          xs={12}
+        >
           <TextField
-            required
-            id="firstName"
-            name="firstName"
-            label="First name"
-            fullWidth
             autoComplete="fname"
+            fullWidth
+            id="firstName"
+            label="First name"
+            name="firstName"
+            required
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid
+          item
+          sm={6}
+          xs={12}
+        >
           <TextField
-            required
-            id="lastName"
-            name="lastName"
-            label="Last name"
-            fullWidth
             autoComplete="lname"
+            fullWidth
+            id="lastName"
+            label="Last name"
+            name="lastName"
+            required
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid
+          item
+          xs={12}
+        >
           <TextField
-            required
-            id="address1"
-            name="address1"
-            label="Address line 1"
-            fullWidth
             autoComplete="billing address-line1"
+            fullWidth
+            id="address1"
+            label="Address line 1"
+            name="address1"
+            required
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid
+          item
+          xs={12}
+        >
           <TextField
-            id="address2"
-            name="address2"
-            label="Address line 2"
-            fullWidth
             autoComplete="billing address-line2"
+            fullWidth
+            id="address2"
+            label="Address line 2"
+            name="address2"
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid
+          item
+          sm={6}
+          xs={12}
+        >
           <TextField
-            required
-            id="city"
-            name="city"
-            label="City"
-            fullWidth
             autoComplete="billing address-level2"
+            fullWidth
+            id="city"
+            label="City"
+            name="city"
+            required
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField id="state" name="state" label="State/Province/Region" fullWidth />
-        </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid
+          item
+          sm={6}
+          xs={12}
+        >
           <TextField
-            required
-            id="zip"
-            name="zip"
-            label="Zip / Postal code"
             fullWidth
+            id="state"
+            label="State/Province/Region"
+            name="state"
+          />
+        </Grid>
+        <Grid
+          item
+          sm={6}
+          xs={12}
+        >
+          <TextField
             autoComplete="billing postal-code"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="country"
-            name="country"
-            label="Country"
             fullWidth
-            autoComplete="billing country"
+            id="zip"
+            label="Zip / Postal code"
+            name="zip"
+            required
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid
+          item
+          sm={6}
+          xs={12}
+        >
+          <TextField
+            autoComplete="billing country"
+            fullWidth
+            id="country"
+            label="Country"
+            name="country"
+            required
+          />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+        >
           <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
+            control={<Checkbox
+              color="secondary"
+              name="saveAddress"
+              value="yes"
+            />}
             label="Use this address for payment details"
           />
         </Grid>
