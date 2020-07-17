@@ -17,6 +17,8 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import {Link} from 'react-router-dom'
 
+import ShoppingCart from '../../ShoppingCart'
+
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -207,18 +209,7 @@ export default function PrimarySearchAppBar() {
               Endereço
               <RoomOutlinedIcon />
             </IconButton>
-            <IconButton
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              Sacola
-              <Badge
-                badgeContent={3}
-                color="secondary"
-              >
-                <LocalMallOutlinedIcon />
-              </Badge>
-            </IconButton>
+            <ShoppingCart/>
             <IconButton
               aria-controls={menuId}
               aria-haspopup="true"

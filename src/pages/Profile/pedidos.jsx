@@ -5,8 +5,6 @@ import PrimarySearchAppBar from '../../Components/Layout/Toolbar';
 import SimpleTable from '../../Components/Table'
 import Container from '@material-ui/core/Container';
 
-
-
 function Pedidos() {
   return(
     <>
