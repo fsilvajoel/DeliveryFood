@@ -5,8 +5,6 @@ import PrimarySearchAppBar from '../../Components/Layout/Toolbar';
 // import { makeStyles } from '@material-ui/core/styles';
 
 import Container from '@material-ui/core/Container';
-
-
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -15,6 +13,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useForm } from 'react-hook-form';
+
 
 const useStyles = makeStyles({
   root: {
@@ -29,6 +29,9 @@ const useStyles = makeStyles({
 
 function Account() {
   const classes = useStyles();
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = data => console.log('dados',data);
+  // console.log(errors);
   // const classes = useStyles();
   return (
     <>
@@ -41,15 +44,18 @@ function Account() {
               <Typography gutterBottom variant="h6">
                 Editar Dados
             </Typography>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Grid container spacing={3}>
                 <Grid item sm={12} xs={12}>
                   <TextField
+                    type="text"
                     autoComplete="fname"
                     fullWidth
                     id="Name"
-                    label="Nome "
-                    name="name"
+                    label="Nome"
+                    name="Nome"
                     required
+                    inputRef={register({required: true})}
                   />
                 </Grid>
                 <Grid item sm={12} xs={12}>
@@ -60,17 +66,23 @@ function Account() {
                     label="Sobrenome"
                     name="lastName"
                     required
+                    inputRef={register({required: true})}
                   />
                 </Grid>
                 <Grid item sm={12} xs={12}>
-                  <TextField
-                    autoComplete="mail"
-                    fullWidth
-                    id="mail"
-                    label="E-mail"
-                    name="mail"
-                    required
-                  />
+                <TextField
+                  id="mail"
+                  label="E-mail"
+                  type="email"
+                  name="email"
+                  fullWidth
+                  autoComplete="email"
+                  required
+                  error={!!errors.email}
+                  inputRef={register({
+                    pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                  })}
+                />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
@@ -80,10 +92,14 @@ function Account() {
                     label="Telefone"
                     name="phone"
                     required
+                    inputRef={register({required: true})}
                   />
                 </Grid>
-                <Button>BOTAO</Button>
+                <Button type="submit" variant="contained">
+                  Salvar
+                </Button>
               </Grid>
+                </form>
             </CardContent>
           </Card>
         </Container>
@@ -94,3 +110,6 @@ function Account() {
 }
 
 export default Account;
+
+
+
