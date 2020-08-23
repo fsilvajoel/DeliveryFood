@@ -11,13 +11,12 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import RoomOutlinedIcon from '@material-ui/icons/RoomOutlined';
 import {Link} from 'react-router-dom'
 
 import ShoppingCart from '../../ShoppingCart'
+import Address from '../../Address'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -202,13 +201,7 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              Endereço
-              <RoomOutlinedIcon />
-            </IconButton>
+            <Address/>
             <ShoppingCart/>
             <IconButton
               aria-controls={menuId}

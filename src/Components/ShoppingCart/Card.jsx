@@ -39,7 +39,6 @@ export default function SacolaCard() {
     { name: 'Product 2', desc: 'Another thing', price: 'R$3.45' },
     { name: 'Product 3', desc: 'Something else', price: 'R$6.51' },
     { name: 'Product 4', desc: 'Best thing of all', price: 'R$14.11' },
-    { name: 'Shipping', desc: '', price: 'Free' },
   ];  
   const classes = useStyles();
   return (
