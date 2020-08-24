@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-import PrimarySearchAppBar from '../../Components/Layout/Toolbar';
+import Navbar from '../../Components/Layout/Navbar';
 import CardProduct from '../../Components/CardProduct';
 import Footer from './../../Components/Layout/Footer'
 
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     backgroundImage: `url(${banner})`,
-    backgroundPosition : 'center',
+    backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     padding: theme.spacing(8, 0, 6),
   },
@@ -53,7 +53,7 @@ export default function Album() {
   return (
     <>
       <CssBaseline />
-      <PrimarySearchAppBar/>
+      <Navbar />
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -112,7 +112,7 @@ export default function Album() {
             gutterBottom
             variant="h2"
           >
-              Os mais pedidos:
+            Os mais pedidos:
           </Typography>
           <Grid
             container
@@ -137,7 +137,7 @@ export default function Album() {
         </Container>
       </main>
       {/* Footer */}
-      <Footer/>
+      <Footer />
       {/* End footer */}
     </>
   );

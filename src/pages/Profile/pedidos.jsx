@@ -1,22 +1,22 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Footer from './../../Components/Layout/Footer'
-import PrimarySearchAppBar from '../../Components/Layout/Toolbar';
+import Navbar from '../../Components/Layout/Navbar';
 import SimpleTable from '../../Components/Table'
 import Container from '@material-ui/core/Container';
 
 function Pedidos() {
-  return(
+  return (
     <>
       <CssBaseline />
-      <PrimarySearchAppBar />
+      <Navbar />
       <main>
         <Container
           fixed
-          style={{height: '70vh' }}
+          style={{ height: '70vh' }}
         >
           <h1>Pedidos</h1>
-          <SimpleTable/>
+          <SimpleTable />
         </Container>
       </main>
       {/* Footer */}

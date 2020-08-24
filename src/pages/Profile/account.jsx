@@ -1,7 +1,7 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Footer from './../../Components/Layout/Footer'
-import PrimarySearchAppBar from '../../Components/Layout/Toolbar';
+import PrimarySearchAppBar from '../../Components/Layout/Navbar';
 // import { makeStyles } from '@material-ui/core/styles';
 
 import Container from '@material-ui/core/Container';
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 function Account() {
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => console.log('dados',data);
+  const onSubmit = data => console.log('dados', data);
   // console.log(errors);
   // const classes = useStyles();
   return (
@@ -38,11 +38,11 @@ function Account() {
       <CssBaseline />
       <PrimarySearchAppBar />
       {/* <main> */}
-        <Container maxWidth="sm" style={{ height: '70vh', paddingTop: '40px' }}>
-          <Card className={classes.root} variant="outlined">
-            <CardContent>
-              <Typography gutterBottom variant="h6">
-                Editar Dados
+      <Container maxWidth="sm" style={{ height: '70vh', paddingTop: '40px' }}>
+        <Card className={classes.root} variant="outlined">
+          <CardContent>
+            <Typography gutterBottom variant="h6">
+              Editar Dados
             </Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Grid container spacing={3}>
@@ -55,7 +55,7 @@ function Account() {
                     label="Nome"
                     name="Nome"
                     required
-                    inputRef={register({required: true})}
+                    inputRef={register({ required: true })}
                   />
                 </Grid>
                 <Grid item sm={12} xs={12}>
@@ -66,23 +66,23 @@ function Account() {
                     label="Sobrenome"
                     name="lastName"
                     required
-                    inputRef={register({required: true})}
+                    inputRef={register({ required: true })}
                   />
                 </Grid>
                 <Grid item sm={12} xs={12}>
-                <TextField
-                  id="mail"
-                  label="E-mail"
-                  type="email"
-                  name="email"
-                  fullWidth
-                  autoComplete="email"
-                  required
-                  error={!!errors.email}
-                  inputRef={register({
-                    pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                  })}
-                />
+                  <TextField
+                    id="mail"
+                    label="E-mail"
+                    type="email"
+                    name="email"
+                    fullWidth
+                    autoComplete="email"
+                    required
+                    error={!!errors.email}
+                    inputRef={register({
+                      pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                    })}
+                  />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
@@ -92,17 +92,17 @@ function Account() {
                     label="Telefone"
                     name="phone"
                     required
-                    inputRef={register({required: true})}
+                    inputRef={register({ required: true })}
                   />
                 </Grid>
                 <Button type="submit" variant="contained">
                   Salvar
                 </Button>
               </Grid>
-                </form>
-            </CardContent>
-          </Card>
-        </Container>
+            </form>
+          </CardContent>
+        </Card>
+      </Container>
       {/* </main> */}
       <Footer />
     </>
