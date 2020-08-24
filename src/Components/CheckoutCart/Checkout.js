@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import Navbar from '../Layout/Navbar';
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -14,10 +14,9 @@ import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 
-
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: 'relative',
+    position: 'relative'
   },
   layout: {
     width: 'auto',
@@ -26,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 600,
       marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+      marginRight: 'auto'
+    }
   },
   paper: {
     marginTop: theme.spacing(3),
@@ -36,20 +35,20 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
-    },
+      padding: theme.spacing(3)
+    }
   },
   stepper: {
-    padding: theme.spacing(3, 0, 5),
+    padding: theme.spacing(3, 0, 5)
   },
   buttons: {
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end'
   },
   button: {
     marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
-  },
+    marginLeft: theme.spacing(1)
+  }
 }));
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
@@ -82,34 +81,19 @@ export default function Checkout() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar
-        className={classes.appBar}
-        color="default"
-        position="absolute"
-      >
-        <Toolbar>
-          <Typography
-            color="inherit"
-            noWrap
-            variant="h6"
-          >
+      <AppBar className={classes.appBar} color="default" position="absolute">
+        <Navbar>
+          <Typography color="inherit" noWrap variant="h6">
             Company name
           </Typography>
-        </Toolbar>
+        </Navbar>
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-          <Typography
-            align="center"
-            component="h1"
-            variant="h4"
-          >
+          <Typography align="center" component="h1" variant="h4">
             Checkout
           </Typography>
-          <Stepper
-            activeStep={activeStep}
-            className={classes.stepper}
-          >
+          <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
@@ -119,15 +103,13 @@ export default function Checkout() {
           <React.Fragment>
             {activeStep === steps.length ? (
               <React.Fragment>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                >
+                <Typography gutterBottom variant="h5">
                   Thank you for your order.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order confirmation, and will
-                  send you an update when your order has shipped.
+                  Your order number is #2001539. We have emailed your order
+                  confirmation, and will send you an update when your order has
+                  shipped.
                 </Typography>
               </React.Fragment>
             ) : (
@@ -135,10 +117,7 @@ export default function Checkout() {
                 {getStepContent(activeStep)}
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
-                    <Button
-                      className={classes.button}
-                      onClick={handleBack}
-                    >
+                    <Button className={classes.button} onClick={handleBack}>
                       Back
                     </Button>
                   )}
@@ -146,8 +125,7 @@ export default function Checkout() {
                     className={classes.button}
                     color="primary"
                     onClick={handleNext}
-                    variant="contained"
-                  >
+                    variant="contained">
                     {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                   </Button>
                 </div>

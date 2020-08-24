@@ -17,7 +17,7 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles((theme) => ({
   root: {
     // whidth : "300px",
-    width : "22rem",
+    width: "22rem",
   },
   listItem: {
     padding: theme.spacing(1, 0),
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     marginTop: theme.spacing(2),
   },
-  iconDelete:{
+  iconDelete: {
     fontSize: "10px",
   }
 }));
@@ -40,34 +40,34 @@ export default function AdressCard() {
     // { name: 'Product 2', desc: 'Another thing', price: 'R$3.45' },
     // { name: 'Product 3', desc: 'Something else', price: 'R$6.51' },
     // { name: 'Product 4', desc: 'Best thing of all', price: 'R$14.11' },
-  ];  
+  ];
   const classes = useStyles();
   return (
     <Card className={classes.root}>
       <CardContent>
-      <>
-      <Typography variant="h6" gutterBottom>
-        Endereço de Entrega
+        <>
+          <Typography variant="h6" gutterBottom>
+            Endereço de Entrega
         <IconButton color="primary" aria-label="Cadastrar novo Endereço" component="span">
-          <AddIcon />
-        </IconButton>
-      </Typography>
-      <List disablePadding>
-      <Checkbox onChange={'a'} name="jason" />
-        {products.map((product) => (
-          <>
-          <ListItem className={classes.listItem} key={product.name}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.bairro}</Typography>
-          </ListItem>
-            <Divider />
-          </>
-        ))}
-      </List>
-      <Grid container spacing={2}>
-        <Button variant="outlined" size="medium">Confirmar</Button>
-      </Grid>
-    </>
+              <AddIcon />
+            </IconButton>
+          </Typography>
+          <List disablePadding>
+            <Checkbox onChange={'a'} name="jason" />
+            {products.map((product) => (
+              <>
+                <ListItem className={classes.listItem} key={product.name}>
+                  <ListItemText primary={product.name} secondary={product.desc} />
+                  <Typography variant="body2">{product.bairro}</Typography>
+                </ListItem>
+                <Divider />
+              </>
+            ))}
+          </List>
+          <Grid container spacing={2}>
+            <Button variant="outlined" size="medium">Confirmar</Button>
+          </Grid>
+        </>
       </CardContent>
     </Card>
   );

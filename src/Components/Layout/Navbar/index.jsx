@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,7 +13,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import ShoppingCart from '../../ShoppingCart'
 import Address from '../../Address'
@@ -40,10 +40,10 @@ const useStyles = makeStyles((theme) => ({
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: '100%',
+    // width: '50%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
-      width: 'auto',
+      // width: 'auto',
     },
   },
   searchIcon: {
@@ -82,10 +82,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function NavBar() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -121,7 +121,7 @@ export default function PrimarySearchAppBar() {
       <Link to="/pedidos">
         <MenuItem>Pedidos</MenuItem>
       </Link>
-      <Link to="/account"> 
+      <Link to="/account">
         <MenuItem onClick={handleMenuClose}>Editar Dados</MenuItem>
       </Link>
       <MenuItem onClick={handleMenuClose}>Sair</MenuItem>
@@ -171,14 +171,14 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             aria-label="open drawer"
             className={classes.menuButton}
             color="inherit"
             edge="start"
-          >
-            <MenuIcon />
-          </IconButton>
+          > */}
+          {/* <MenuIcon /> */}
+          {/* </IconButton> */}
           <Typography
             className={classes.title}
             noWrap
@@ -186,23 +186,25 @@ export default function PrimarySearchAppBar() {
           >
             DeliveryFood
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+
+          <div className={classes.grow}>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+                placeholder="Pesquisar"
+              />
             </div>
-            <InputBase
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              placeholder="Pesquisar"
-            />
           </div>
-          <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Address/>
-            <ShoppingCart/>
+            <Address />
+            <ShoppingCart />
             <IconButton
               aria-controls={menuId}
               aria-haspopup="true"
@@ -211,7 +213,7 @@ export default function PrimarySearchAppBar() {
               edge="end"
               onClick={handleProfileMenuOpen}
             >
-              Perfil 
+              Perfil
               <AccountCircle />
             </IconButton>
           </div>
@@ -230,6 +232,6 @@ export default function PrimarySearchAppBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-    </div>
+    </div >
   );
 }

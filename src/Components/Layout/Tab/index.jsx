@@ -13,7 +13,7 @@ import CarrrouselCategories from '../../CarouselCategories/index'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-console.log('index',index);
+  console.log('index', index);
   return (
     <div
       role="tabpanel"
@@ -77,10 +77,10 @@ export default function ScrollableTabsButtonAuto() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <CarrrouselCategories/>
+        {/* <CarrrouselCategories/> */}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <CarrrouselCategoriesBebidas/>
+        {/* <CarrrouselCategoriesBebidas /> */}
       </TabPanel>
     </div>
   );
