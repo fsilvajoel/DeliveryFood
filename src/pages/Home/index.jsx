@@ -1,6 +1,8 @@
-import React, {Component,Fragment, useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 //api
-import getProducts from '../../Api/productsApi'
+import { getAllProductsData } from '../../services/Api/productsApi'
+import { getAllProducts } from '../../Redux/Store/ProductsDucks'
 //material UI
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 //components
-import PrimarySearchAppBar from '../../Components/Layout/Toolbar';
+import NavBar from '../../Components/Layout/Navbar';
 import CardProduct from '../../Components/CardProduct';
 import Footer from './../../Components/Layout/Footer'
 import CarouselCategories from './../../Components/CarouselCategories'
@@ -51,29 +53,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-export default function ListProducts(){
-  const [products, setProducts] = useState([]);
+export default function ListProducts() {
+  const dispatch = useDispatch()
+  const classes = useStyles()
+  let data = {}
+  let comida = useSelector((data) => data.productsStore.comida)
+  // console.log(comida)
+  let bebida = useSelector((data) => data.productsStore.cebida)
+  const recieveAllProducts = async () => {
+    data = await getAllProductsData()
+    dispatch(getAllProducts(data))
+  }
 
-	
-  // useEffect(() =>{
-  // const data = product.get();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async() =>{
-    // const data = getProducts();
-    const response = await 	fetch('http://localhost:3000/products')
-    const data = await response.json();
-    console.log('useeffect', data)
-	
-    setProducts(data);
-  }, []);//só executa o effect quando mudar a variavel. caso vazio, executa uma unica
-  const classes = useStyles();
+  useEffect(() => {
+    recieveAllProducts()
+  }, []);
+
   return (
-    <Fragment>
+    <>
       <CssBaseline />
-      <PrimarySearchAppBar />
+      <NavBar />
       <main>
-        <Tab/>
+        <Tab />
         {/* <CarouselCategories /> */}
         {/* Hero unit */}
         {/* <BannerIntro/> */}
@@ -85,24 +86,29 @@ export default function ListProducts(){
           <Grid
             container
             spacing={4}
-          >								
-            {products.map((prod) => (
-              <Grid
-                item
-                key={prod.id}
-                md={4}
-                sm={6}
-                xs={12}
-              >
-                <CardProduct
-                  Content={classes.cardContent}
-                  description={prod.description}
-                  image={prod.img}
-                  Media={classes.cardMedia}
-                  Name={classes.card}
-                  title={prod.name}
-                />
-              </Grid>
+          >
+            {console.log('LOG', comida)}
+            {comida?.categories?.map((categories) => (
+              categories?.products.map((prod) => (
+                <>
+                  <Grid
+                    item
+                    // key={prod.id}
+                    md={4}
+                    sm={6}
+                    xs={12}
+                  >
+                    <CardProduct
+                      // Content={classes.cardContent}
+                      description={prod.description}
+                      image={prod.image}
+                      // Media={classes.cardMedia}
+                      // Name={classes.card}
+                      title={prod.name}
+                    />
+                  </Grid>
+                </>
+              ))
             ))}
           </Grid>
         </Container>
@@ -110,7 +116,6 @@ export default function ListProducts(){
       {/* Footer */}
       <Footer />
       {/* End footer */}
-    </Fragment>
+    </>
   );
 }
-	

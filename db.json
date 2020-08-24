@@ -1,0 +1,93 @@
+{
+  "Comida": {
+    "image": "https://delivery.growtechnologies.com.br/media/groups/Comida.jpeg",
+    "categories": [
+      {
+        "image": "https://delivery.growtechnologies.com.br/media/groups/Temakis.jpg",
+        "name": "Temakis",
+        "slug": "temakis",
+        "products": [
+          {
+            "name": "Tameki Filadelfia",
+            "slug": "temaki-filadelfia",
+            "description": "Descrição",
+            "obs": "Observação",
+            "price": 25.0,
+            "image": "https://delivery.growtechnologies.com.br/media/groups/Tameki_Filadelfia.jpg",
+            "flavors": [
+              {
+                "name": "Sem arroz",
+                "sizes": [
+                  {
+                    "size": "Normal",
+                    "value": 3.0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "image": "https://delivery.growtechnologies.com.br/media/groups/Uramakis.jpeg",
+        "name": "Uramakis",
+        "slug": "uramakis",
+        "products": [
+          {
+            "name": "Uramaki Pokemon",
+            "slug": "uramaki-pokemon",
+            "description": "Descrição",
+            "obs": "Observação",
+            "price": 30.0,
+            "image": "https://delivery.growtechnologies.com.br/media/groups/Uramaki_Pokemon.jpeg",
+            "flavors": [
+              {
+                "name": "Cream Creese",
+                "sizes": [
+                  {
+                    "size": "Normal",
+                    "value": 1.0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "image": "https://delivery.growtechnologies.com.br/media/groups/pizza.jpg",
+        "name": "pizza",
+        "slug": "pizzapower",
+        "products": [
+          {
+            "name": "Pizza",
+            "slug": "pizza",
+            "description": "pizza muito saborosa",
+            "obs": "não há observações",
+            "price": 43.0,
+            "image": "https://delivery.growtechnologies.com.br/media/groups/Pizza.png",
+            "flavors": [
+              {
+                "name": "Calabresa",
+                "sizes": [
+                  {
+                    "size": "Pizza Grande",
+                    "value": 0.0
+                  },
+                  {
+                    "size": "Pizza Broto",
+                    "value": 3.0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Bebida": {
+    "image": "https://delivery.growtechnologies.com.br/media/groups/Bebida.jpg",
+    "categories": []
+  }
+}
