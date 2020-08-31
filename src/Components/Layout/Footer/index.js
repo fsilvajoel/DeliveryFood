@@ -1,5 +1,4 @@
 import React from 'react';
-// import Link from "@material-ui/core/Link";
 import Typography from '@material-ui/core/Typography';
 import Copyright from '../Copyright';
 const Footer = () => (
@@ -15,7 +14,9 @@ const Footer = () => (
         variant="subtitle1">
         "Quando sentir que a vida está fora de foco, volte ao básico. Respire."
       </Typography>
-      <Typography variant="subtitle2">Sr Miyagi</Typography>
+      <Typography align="center" variant="subtitle2">
+        Sr Miyagi
+      </Typography>
       <Copyright />
     </footer>
   </>
