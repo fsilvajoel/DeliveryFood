@@ -83,26 +83,16 @@ export default function ListProducts() {
             container
             spacing={4}
           >
-            {/* {console.log('LOG', comida)} */}
             {comida?.categories?.map((categories) => (
               categories?.products.map((prod) => (
                 <>
-                  {/* {console.log('prod', prod)} */}
                   <Grid
                     item
                     md={4}
                     sm={6}
                     xs={12}
                   >
-                    <CardProduct
-                      Content={classes.cardContent}
-                      Media={classes.cardMedia}
-                      Name={classes.card}
-                      data={prod}
-                    // description={prod.description}
-                    // image={prod.image}
-                    // title={prod.name}
-                    />
+                    <CardProduct data={prod} />
                   </Grid>
                 </>
               ))
