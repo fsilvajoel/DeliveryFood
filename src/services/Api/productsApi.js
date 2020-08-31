@@ -58,6 +58,15 @@ const data = {
                     value: 3.0
                   }
                 ]
+              },
+              {
+                name: 'Com arroz',
+                sizes: [
+                  {
+                    size: 'Normal',
+                    value: 3.0
+                  }
+                ]
               }
             ]
           }

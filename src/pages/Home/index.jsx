@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllProductsData } from '../../services/Api/productsApi'
 import { getAllProducts } from '../../Redux/Store/ProductsDucks'
 //material UI
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
@@ -16,7 +16,7 @@ import NavBar from '../../Components/Layout/Navbar';
 import CardProduct from '../../Components/CardProduct';
 import Footer from './../../Components/Layout/Footer'
 import CarouselCategories from './../../Components/CarouselCategories'
-import BannerIntro from './../../Components/BannerIntro'
+// import BannerIntro from './../../Components/BannerIntro'
 import Tab from './../../Components/Layout/Tab'
 
 const useStyles = makeStyles((theme) => ({
@@ -58,7 +58,6 @@ export default function ListProducts() {
   const classes = useStyles()
   let data = {}
   let comida = useSelector((data) => data.productsStore.comida)
-  // console.log(comida)
   let bebida = useSelector((data) => data.productsStore.cebida)
   const recieveAllProducts = async () => {
     data = await getAllProductsData()
@@ -76,35 +75,33 @@ export default function ListProducts() {
       <main>
         <Tab />
         {/* <CarouselCategories /> */}
-        {/* Hero unit */}
-        {/* <BannerIntro/> */}
         <Container
           className={classes.cardGrid}
           maxWidth="md"
         >
-          {/* End hero unit */}
           <Grid
             container
             spacing={4}
           >
-            {console.log('LOG', comida)}
+            {/* {console.log('LOG', comida)} */}
             {comida?.categories?.map((categories) => (
               categories?.products.map((prod) => (
                 <>
+                  {/* {console.log('prod', prod)} */}
                   <Grid
                     item
-                    // key={prod.id}
                     md={4}
                     sm={6}
                     xs={12}
                   >
                     <CardProduct
-                      // Content={classes.cardContent}
-                      description={prod.description}
-                      image={prod.image}
-                      // Media={classes.cardMedia}
-                      // Name={classes.card}
-                      title={prod.name}
+                      Content={classes.cardContent}
+                      Media={classes.cardMedia}
+                      Name={classes.card}
+                      data={prod}
+                    // description={prod.description}
+                    // image={prod.image}
+                    // title={prod.name}
                     />
                   </Grid>
                 </>
@@ -113,9 +110,7 @@ export default function ListProducts() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
       <Footer />
-      {/* End footer */}
     </>
   );
 }
