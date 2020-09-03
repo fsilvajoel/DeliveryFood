@@ -1,12 +1,13 @@
 // types
 
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
-export const SET_COMIDA = 'SET_COMIDA';
-export const SET_BEBIDA = 'SET_BEBIDA';
+export const SET_FOOD = 'SET_FOOD';
+export const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY';
 
 const initialState = {
-  comida: {},
-  bebida: {}
+  food: {},
+  drink: {},
+  current_category: {}
 };
 // reducer
 export default function products(state = initialState, action) {
@@ -16,8 +17,13 @@ export default function products(state = initialState, action) {
       console.log('REDUCERRR', action);
       return {
         ...state,
-        comida: action.payload.Comida,
-        bebida: action.payload.Bebida
+        food: action.payload.Comida,
+        drink: action.payload.Bebida
+      };
+    case SET_CURRENT_CATEGORY:
+      return {
+        ...state,
+        current_category: action.payload
       };
     default:
       return state;
@@ -27,4 +33,8 @@ export default function products(state = initialState, action) {
 export const getAllProducts = (products) => ({
   type: GET_ALL_PRODUCTS,
   payload: products
+});
+export const setCurrentCategory = (category) => ({
+  type: SET_CURRENT_CATEGORY,
+  payload: category
 });
