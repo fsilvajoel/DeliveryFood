@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 //api
 import { getAllProductsData } from '../../services/Api/productsApi'
 import { getAllProducts } from '../../Redux/Store/ProductsDucks'
-//material UI
-// import Button from '@material-ui/core/Button';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 // import Typography from '@material-ui/core/Typography';
@@ -57,8 +56,8 @@ export default function ListProducts() {
   const dispatch = useDispatch()
   const classes = useStyles()
   let data = {}
-  let comida = useSelector((data) => data.productsStore.comida)
-  let bebida = useSelector((data) => data.productsStore.cebida)
+  const food = useSelector((data) => data.productsStore.food)
+  const drink = useSelector((data) => data.productsStore.drink)
   const recieveAllProducts = async () => {
     data = await getAllProductsData()
     dispatch(getAllProducts(data))
@@ -66,6 +65,11 @@ export default function ListProducts() {
 
   useEffect(() => {
     recieveAllProducts()
+    // debugger
+  }, []);
+
+  useEffect(() => {
+    //atualizar quando receber dado novo de categoria selecionada
   }, []);
 
   return (
@@ -74,24 +78,13 @@ export default function ListProducts() {
       <NavBar />
       <main>
         <Tab />
-        {/* <CarouselCategories /> */}
-        <Container
-          className={classes.cardGrid}
-          maxWidth="md"
-        >
-          <Grid
-            container
-            spacing={4}
-          >
-            {comida?.categories?.map((categories) => (
+        <CarouselCategories data={food?.categories} />
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container spacing={4}>
+            {food?.categories?.map((categories) => (
               categories?.products.map((prod) => (
                 <>
-                  <Grid
-                    item
-                    md={4}
-                    sm={6}
-                    xs={12}
-                  >
+                  <Grid item md={4} sm={6} xs={12}>
                     <CardProduct data={prod} />
                   </Grid>
                 </>
