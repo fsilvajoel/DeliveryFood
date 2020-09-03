@@ -42,7 +42,6 @@ export default function FlavorsList(props) {
 
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => console.log(data);
-  console.log(errors);
   return (
     <Card>
       <form onSubmit={handleSubmit.bind(onSubmit)}>
