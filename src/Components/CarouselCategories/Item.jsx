@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrentCategory } from '../../Redux/Store/ProductsDucks'
-const dispatch = useDispatch()
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,13 +38,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 const Item = (props) => {
+  const dispatch = useDispatch()
   const { img, title, link } = props;
   const classes = useStyles();
+
   function handleSelect(data) {
     dispatch(setCurrentCategory(data))
-    console.log('FUI CLICADA', data)
   }
-  // console.log('dado redux', useSelector((data) => data.productsStore.current_category))
 
   return (
     <>

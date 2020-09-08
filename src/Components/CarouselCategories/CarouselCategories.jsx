@@ -12,7 +12,6 @@ const breakPoints = [
 ];
 const CarrrouselCategories = (props) => {
   const data = props.data
-  console.log('recieve?', props.data)
 
   return (
     <>
@@ -32,8 +31,6 @@ const CarrrouselCategories = (props) => {
         :
         <></>
       }
-      {/* <Item key="1234" img={data.img2} link={data.link} title={data.title1} />2*/}
-      {/* <Item img={data.img3} link={data.link} title={data.title2} /> */}
     </>
   );
 };
