@@ -14,8 +14,8 @@ import Container from '@material-ui/core/Container';
 import NavBar from '../../Components/Layout/Navbar';
 import CardProduct from '../../Components/CardProduct';
 import Footer from './../../Components/Layout/Footer'
-import CarouselCategories from './../../Components/CarouselCategories'
-// import BannerIntro from './../../Components/BannerIntro'
+import CarouselCategories from '../../Components/CarouselCategories/CarouselCategories'
+import BannerIntro from './BannerIntro'
 import Tab from './../../Components/Layout/Tab'
 
 const useStyles = makeStyles((theme) => ({
@@ -55,22 +55,29 @@ const useStyles = makeStyles((theme) => ({
 export default function ListProducts() {
   const dispatch = useDispatch()
   const classes = useStyles()
-  let data = {}
+  const [showCategory, setshowCategory] = useState()
+
   const food = useSelector((data) => data.productsStore.food)
   const drink = useSelector((data) => data.productsStore.drink)
+
+  let data = {}
+  let showProducts = useSelector((data) => data.productsStore.current_category)
+
+
   const recieveAllProducts = async () => {
     data = await getAllProductsData()
     dispatch(getAllProducts(data))
   }
 
-  useEffect(() => {
-    recieveAllProducts()
-    // debugger
-  }, []);
+  function handleShowProduct() {
+    setshowCategory(food?.categories?.filter(category => category.slug == showProducts))
+  }
 
   useEffect(() => {
     //atualizar quando receber dado novo de categoria selecionada
-  }, []);
+    recieveAllProducts()
+    handleShowProduct()
+  }, [useSelector((data) => data.productsStore.current_category)]);
 
   return (
     <>
@@ -80,17 +87,20 @@ export default function ListProducts() {
         <Tab />
         <CarouselCategories data={food?.categories} />
         <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={4}>
-            {food?.categories?.map((categories) => (
-              categories?.products.map((prod) => (
-                <>
-                  <Grid item md={4} sm={6} xs={12}>
-                    <CardProduct data={prod} />
-                  </Grid>
-                </>
-              ))
-            ))}
-          </Grid>
+          {showProducts.length != undefined ?
+            <Grid container spacing={4}>
+              {showCategory?.map(category =>
+                category?.products.map((prod, index) =>
+                  <>
+                    <Grid key={index} item md={4} sm={6} xs={12}>
+                      <CardProduct data={prod} />
+                    </Grid>
+                  </>
+                ))}
+            </Grid>
+            :
+            <BannerIntro />
+          }
         </Container>
       </main>
       <Footer />
