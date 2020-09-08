@@ -1,19 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-
-// 
-import CarrrouselCategoriesBebidas from '../../CarouselCategories/indexBebidas'
-import CarrrouselCategories from '../../CarouselCategories/index'
+import PropTypes from 'prop-types';
+import CarrrouselCategories from '../../CarouselCategories/CarouselCategories'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  console.log('index', index);
   return (
     <div
       role="tabpanel"
@@ -23,9 +16,9 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
+        <div>
+          {children}
+        </div>
       )}
     </div>
   );
@@ -37,51 +30,35 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `scrollable-auto-tab-${index}`,
-    'aria-controls': `scrollable-auto-tabpanel-${index}`,
-  };
-}
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    width: '100%',
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
 
-export default function ScrollableTabsButtonAuto() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+export default function TabCategories(props) {
+  const food = props.food
+  const drink = props.drink
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="scrollable"
-          scrollButtons="auto"
-          aria-label="scrollable auto tabs example"
-        >
-          <Tab label="Comidas" {...a11yProps(0)} />
-          <Tab label="Bebidas" {...a11yProps(1)} />
-        </Tabs>
-      </AppBar>
+    <>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        indicatorColor="primary"
+        textColor="primary"
+      // centered
+      >
+        <Tab label="Comidas" />
+        <Tab label="Bebidas" />
+      </Tabs>
       <TabPanel value={value} index={0}>
-        {/* <CarrrouselCategories/> */}
+        <CarrrouselCategories data={food} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {/* <CarrrouselCategoriesBebidas /> */}
+        <CarrrouselCategories data={drink} />
       </TabPanel>
-    </div>
+    </>
   );
 }

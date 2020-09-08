@@ -10,7 +10,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 export default function ModalProduct(props) {
   const { name, obs, image, price, description, flavors } = props.data
-  console.log('FLAVORS', props.data)
+  // console.log('FLAVORS', props.data)
 
   // getModalStyle is not a pure function, we roll the style only on the first render
   const getModalStyle = () => {
