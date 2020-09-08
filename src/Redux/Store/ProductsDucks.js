@@ -13,8 +13,6 @@ const initialState = {
 export default function products(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_PRODUCTS:
-      //jogar para states especificos cada produto
-      console.log('REDUCERRR', action);
       return {
         ...state,
         food: action.payload.Comida,
