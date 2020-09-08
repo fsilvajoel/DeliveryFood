@@ -16,7 +16,8 @@ import CardProduct from '../../Components/CardProduct';
 import Footer from './../../Components/Layout/Footer'
 import CarouselCategories from '../../Components/CarouselCategories/CarouselCategories'
 import BannerIntro from './BannerIntro'
-import Tab from './../../Components/Layout/Tab'
+import Tab from '../../Components/Layout/Tab/index2'
+import TabCategories from '../../Components/Layout/Tab/index'
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -84,8 +85,9 @@ export default function ListProducts() {
       <CssBaseline />
       <NavBar />
       <main>
-        <Tab />
-        <CarouselCategories data={food?.categories} />
+        <TabCategories food={food?.categories} drink={drink?.categories} />
+        {/* <Tab food={food?.categories} drink={drink?.categories} /> */}
+        {/* <CarouselCategories data={food?.categories} /> */}
         <Container className={classes.cardGrid} maxWidth="md">
           {showProducts.length != undefined ?
             <Grid container spacing={4}>
