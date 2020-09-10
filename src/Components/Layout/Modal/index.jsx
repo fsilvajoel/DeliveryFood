@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
-import ModalBody from './ModalBody'
-import { makeStyles } from '@material-ui/core/styles';
-import FlavorsList from './FlavorsList';
-import { Divider } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
 
+import Button from '@material-ui/core/Button';
+import CloseIcon from '@material-ui/icons/Close';
+import { Divider } from '@material-ui/core';
+import FlavorsList from './FlavorsList';
+import Modal from '@material-ui/core/Modal';
+// import ModalBody from './ModalBody'
+import { makeStyles } from '@material-ui/core/styles';
 
 export default function ModalProduct(props) {
   const { name, obs, image, price, description, flavors } = props.data
-  // console.log('FLAVORS', props.data)
 
   // getModalStyle is not a pure function, we roll the style only on the first render
   const getModalStyle = () => {
@@ -19,6 +18,7 @@ export default function ModalProduct(props) {
       left: `50%`,
       transform: `translate(-50%, -50%)`,
       display: 'flex',
+      flexDirection: 'row-reverse',
     };
   }
 
@@ -62,7 +62,7 @@ export default function ModalProduct(props) {
         open={active}
         onClose={actived}
       >
-        <div style={modalStyle} className={classes.paper}>
+        <div key='modal' style={modalStyle} className={classes.paper}>
           <button className={classes.button} onClick={actived}><CloseIcon /></button>
           <div id="simple-modal-description" className={classes.simpleModal}>
             <img style={{ width: "300px" }} src={image} />
@@ -73,7 +73,7 @@ export default function ModalProduct(props) {
             <Divider />
             <h3 style={{ color: '#6ba449' }}>R$: {price}</h3>
             <h1>SABORES</h1>
-            <FlavorsList flavors={flavors} />
+            <FlavorsList modal={actived} product={props.data} />
           </div>
           <p>
           </p>
