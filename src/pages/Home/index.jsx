@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-//api
-import { getAllProductsData } from '../../services/Api/productsApi'
-import { getAllProducts } from '../../Redux/Store/ProductsDucks'
 
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-// import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import BannerIntro from './BannerIntro'
+import CardProduct from '../../Components/CardProduct';
+import CarouselCategories from '../../Components/CarouselCategories/CarouselCategories'
 import Container from '@material-ui/core/Container';
-
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Footer from './../../Components/Layout/Footer'
+import Grid from '@material-ui/core/Grid';
 //components
 import NavBar from '../../Components/Layout/Navbar';
-import CardProduct from '../../Components/CardProduct';
-import Footer from './../../Components/Layout/Footer'
-import CarouselCategories from '../../Components/CarouselCategories/CarouselCategories'
-import BannerIntro from './BannerIntro'
 import Tab from '../../Components/Layout/Tab/index2'
 import TabCategories from '../../Components/Layout/Tab/index'
+import { getAllProducts } from '../../Redux/Store/ProductsDucks'
+//api
+import { getAllProductsData } from '../../services/Api/productsApi'
+// import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -86,8 +85,6 @@ export default function ListProducts() {
       <NavBar />
       <main>
         <TabCategories food={food?.categories} drink={drink?.categories} />
-        {/* <Tab food={food?.categories} drink={drink?.categories} /> */}
-        {/* <CarouselCategories data={food?.categories} /> */}
         <Container className={classes.cardGrid} maxWidth="md">
           {showProducts.length != undefined ?
             <Grid container spacing={4}>
@@ -95,7 +92,7 @@ export default function ListProducts() {
                 category?.products.map((prod, index) =>
                   <>
                     <Grid key={index} item md={4} sm={6} xs={12}>
-                      <CardProduct data={prod} />
+                      <CardProduct key={index} data={prod} />
                     </Grid>
                   </>
                 ))}
