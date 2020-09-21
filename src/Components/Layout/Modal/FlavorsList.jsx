@@ -45,12 +45,12 @@ export default function FlavorsList(props) {
       'flavor': flavor,
       'totalPrice': (Number(product.price) + Number(flavor.value)).toFixed(2)
     };
-    console.log(SelectedProduct)
+    // console.log(SelectedProduct)
     dispatch(setNewProduct(SelectedProduct))
     props.modal()
 
   }
-  console.log('console', useSelector((data) => data.checkoutCartStore.shoppingCart));
+  // console.log('console', useSelector((data) => data.checkoutCartStore.shoppingCart));
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <CardContent>

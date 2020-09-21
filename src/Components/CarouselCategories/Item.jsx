@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux'
-import { setCurrentCategory } from '../../Redux/Store/ProductsDucks'
+import { setCurrentCategory } from '../../Redux/Store/Products/ProductsDucks'
 
 
 const useStyles = makeStyles((theme) => ({

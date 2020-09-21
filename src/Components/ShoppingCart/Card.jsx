@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Card, CardContent, CardActions } from "@material-ui/core/";
-
+import { Link } from 'react-router-dom'
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
@@ -13,6 +13,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 
 import { useDispatch, useSelector } from 'react-redux'
+import { DeleteProduct } from '../../Redux/Store/CheckoutCart/CheckoutCart'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,11 +36,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SacolaCard() {
+  const dispatch = useDispatch()
   const products = useSelector((data) => data.checkoutCartStore.shoppingCart)
   console.log('sacola', products)
   let total = 0
-
+  const dropProduct = (position) => {
+    console.log('entrei aqui', position)
+    dispatch(DeleteProduct(position))
+  }
   const classes = useStyles();
+
+  useEffect(() => {
+  }, [useSelector((data) => data.checkoutCartStore.shoppingCart)]);
+
+
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -57,7 +67,7 @@ export default function SacolaCard() {
                   return (
                     <>
                       <ListItem className={classes.listItem} key={product.name}>
-                        <IconButton className={classes.iconDelete} aria-label="delete">
+                        <IconButton className={classes.iconDelete} onClick={() => dropProduct(key)} aria-label="delete">
                           <DeleteIcon />
                         </IconButton>
                         <ListItemText primary={product.name} secondary={product.desc} />
@@ -80,7 +90,9 @@ export default function SacolaCard() {
         </>
       </CardContent>
       <CardActions>
-        <Button variant="outlined" size="medium">Finalizar</Button>
+        <Link to="/Checkout">
+          <Button ariant="outlined" size="medium">Finalizar</Button>
+        </Link>
       </CardActions>
     </Card>
   );
