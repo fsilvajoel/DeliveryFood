@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import BannerIntro from './BannerIntro'
 import CardProduct from '../../Components/CardProduct';
-import CarouselCategories from '../../Components/CarouselCategories/CarouselCategories'
+// import CarouselCategories from '../../Components/CarouselCategories/CarouselCategories'
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Footer from './../../Components/Layout/Footer'
 import Grid from '@material-ui/core/Grid';
 //components
 import NavBar from '../../Components/Layout/Navbar';
-import Tab from '../../Components/Layout/Tab/index2'
+// import Tab from '../../Components/Layout/Tab/index2'
 import TabCategories from '../../Components/Layout/Tab/index'
-import { getAllProducts } from '../../Redux/Store/ProductsDucks'
+import { getAllProducts } from '../../Redux/Store/Products/ProductsDucks'
 //api
 import { getAllProductsData } from '../../services/Api/productsApi'
 // import Typography from '@material-ui/core/Typography';

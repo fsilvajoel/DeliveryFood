@@ -1,12 +1,7 @@
-const SET_SHOPPING_CART = 'SET_SHOPPING_CART';
+const SET_SHOPPING_CART = 'SET_SHOPPING_CART'
 
 const initialState = {
-  shoppingCart: []
-};
-
-function addProductInCart(product) {
-  initialState.shoppingCart.push(product);
-  return initialState;
+  shoppingCart: [],
 }
 
 export default function checkoutCart(state = initialState, action) {
@@ -14,14 +9,14 @@ export default function checkoutCart(state = initialState, action) {
     case SET_SHOPPING_CART:
       return {
         ...state,
-        shoppingCart: addProductInCart(action.payload)
-      };
+        shoppingCart: [...state.shoppingCart, action.payload],
+      }
     default:
-      return state;
+      return state
   }
 }
 // actions
 export const setNewProduct = (product) => ({
   type: SET_SHOPPING_CART,
-  payload: product
-});
+  payload: product,
+})

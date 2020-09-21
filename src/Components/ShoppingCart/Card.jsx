@@ -12,6 +12,9 @@ import Divider from '@material-ui/core/Divider';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 
+import { useDispatch, useSelector } from 'react-redux'
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     // whidth : "300px",
@@ -32,13 +35,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SacolaCard() {
+  const products = useSelector((data) => data.checkoutCartStore.shoppingCart)
+  console.log('sacola', products)
+  let total = 0
 
-  const products = [
-    { name: 'Product 1', desc: 'A nice thing', price: 'R$9.99' },
-    { name: 'Product 2', desc: 'Another thing', price: 'R$3.45' },
-    { name: 'Product 3', desc: 'Something else', price: 'R$6.51' },
-    { name: 'Product 4', desc: 'Best thing of all', price: 'R$14.11' },
-  ];
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -48,21 +48,33 @@ export default function SacolaCard() {
             Sacola de pedidos
       </h2>
           <List disablePadding>
-            {products.map((product) => (
+            {products < 1 ?
+              <><h2>A sacola está vazia</h2></>
+              :
               <>
-                <ListItem className={classes.listItem} key={product.name}>
-                  <IconButton className={classes.iconDelete} aria-label="delete"><DeleteIcon /></IconButton>
-                  <ListItemText primary={product.name} secondary={product.desc} />
-                  <p>{product.price}</p>
-                </ListItem>
-                <Divider />
+                {products?.map((product, key) => {
+                  total = Number(total) + Number(product.totalPrice)
+                  return (
+                    <>
+                      <ListItem className={classes.listItem} key={product.name}>
+                        <IconButton className={classes.iconDelete} aria-label="delete">
+                          <DeleteIcon />
+                        </IconButton>
+                        <ListItemText primary={product.name} secondary={product.desc} />
+                        <h5>{product.totalPrice}</h5>
+                      </ListItem>
+                      <Divider />
+                    </>
+                  )
+                }
+                )}
               </>
-            ))}
+            }
             <ListItem className={classes.listItem}>
-              <ListItemText primary="Total" />
+              <ListItemText primary="Total pedido" />
               <Typography variant="subtitle1" className={classes.total}>
-                R$34.06
-          </Typography>
+                R${total.toFixed(2)}
+              </Typography>
             </ListItem>
           </List>
         </>

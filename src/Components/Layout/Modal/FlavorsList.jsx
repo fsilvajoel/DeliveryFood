@@ -37,16 +37,14 @@ export default function FlavorsList(props) {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
     let flavor = JSON.parse(data.flavor)
-    let SelectedProduct = [
-      {
-        'name': product.name,
-        'description': product.description,
-        'image': product.image,
-        'price': product.price,
-        'flavor': flavor,
-        'totalPrice': (Number(product.price) + Number(flavor.value)).toFixed(2)
-      }
-    ];
+    let SelectedProduct = {
+      'name': product.name,
+      'description': product.description,
+      'image': product.image,
+      'price': product.price,
+      'flavor': flavor,
+      'totalPrice': (Number(product.price) + Number(flavor.value)).toFixed(2)
+    };
     console.log(SelectedProduct)
     dispatch(setNewProduct(SelectedProduct))
     props.modal()
