@@ -1,36 +1,38 @@
 {
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["import", "eslint-plugin-import-helpers"],
+  "rules": {
+    "react/jsx-closing-bracket-location": [
+      "error",
+      {
+        "nonEmpty": "after-props",
+        "selfClosing": "tag-aligned"
+      }
+    ],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/no-unresolved": ["error", { "ignore": ["^[~]"] }],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": ["/^react/", "module", "/^@shared/", ["parent", "sibling", "index"]],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ],
+    "react/jsx-props-no-spreading": 0
+  },
   "env": {
     "browser": true,
     "es6": true,
-    "jest": true
+    "jest": false
   },
-  "parser": "babel-eslint",
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier", "eslint-plugin-import-helpers"],
-
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": 2020,
     "sourceType": "module"
-  },
-  "rules": {
-    "prettier/prettier": ["error"],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "import-helpers/order-imports": [
-      "warn",
-      {
-        "newlinesBetween": "always",
-        "groups": [
-          "/^react/",
-          "module",
-          "/^@shared/",
-          ["parent", "sibling", "index"]
-        ],
-        "alphabetize": { "order": "asc", "ignoreCase": true }
-      }
-    ]
   },
   "settings": {
     "react": { "version": "detect" }
