@@ -6,7 +6,8 @@ import Home from '../../pages/Home'
 import SignUp from '../../pages/Login/SignUp'
 import Login from '../../pages/Login/Login'
 // import EntranceHub from '../../pages/EntranceHub';
-import Checkout from '../../Components/CheckoutCart/Checkout'
+// import Checkout from '../../Components/CheckoutCart/Checkout'
+import Checkout from '../../pages/OrderCheckout/index'
 import Pedidos from '../../pages/Profile/pedidos'
 import Account from '../../pages/Profile/account'
 const routeList = [
