@@ -9,7 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { setNewProduct } from '../../../Redux/Store/CheckoutCart/CheckoutCart'
+import { setNewProduct } from '../../Redux/Store/CheckoutCart/CheckoutCart'
 import { useForm } from 'react-hook-form';
 
 const useStyles = makeStyles((theme) => ({

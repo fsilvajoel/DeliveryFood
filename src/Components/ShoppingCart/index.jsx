@@ -4,10 +4,26 @@ import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import { IconButton } from "@material-ui/core";
 import Badge from '@material-ui/core/Badge';
-import SacolaCard from "./Card";
+import BagCard from "./list";
+import { Card, CardContent, CardActions } from "@material-ui/core/";
+import { Link } from 'react-router-dom'
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    // whidth : "300px",
+    width: "18rem",
+  },
+}));
+
+
+
 export default function PopoverPopupState() {
+  const classes = useStyles();
   return (
-    <PopupState variant="popover" popupId="demo-popup-popover">
+    <PopupState variant="popover" popupId="shopingCart">
       {popupState => (
         <div>
           <IconButton
@@ -16,10 +32,10 @@ export default function PopoverPopupState() {
             {...bindTrigger(popupState)}
           >
             <Badge
-                badgeContent={3}
-                color="secondary"
-              >
-            Sacola
+              badgeContent={3}
+              color="secondary"
+            >
+              Sacola
             <LocalMallOutlinedIcon />
             </Badge>
           </IconButton>
@@ -34,10 +50,17 @@ export default function PopoverPopupState() {
               horizontal: "center"
             }}
           >
-            {/* <Box p={2}> */}
-            <SacolaCard />
-            {/* <Typography>The content of the Popover.</Typography> */}
-            {/* </Box> */}
+            <Card className={classes.root}>
+              <CardContent>
+                <h2>Sacola de pedidos</h2>
+                <BagCard />
+              </CardContent>
+              <CardActions style={{ flexDirection: "row-reverse" }}>
+                <Link to="/checkout">
+                  <Button ariant="outlined" size="medium">Finalizar</Button>
+                </Link>
+              </CardActions>
+            </Card>
           </Popover>
         </div>
       )}
