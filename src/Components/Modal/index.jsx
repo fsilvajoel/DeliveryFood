@@ -19,6 +19,8 @@ export default function ModalProduct(props) {
       transform: `translate(-50%, -50%)`,
       display: 'flex',
       flexDirection: 'row-reverse',
+      textAlign: "center",
+      border: "none"
     };
   }
 
@@ -36,11 +38,32 @@ export default function ModalProduct(props) {
     button: {
       height: '36px',
       position: 'absolute',
+      border: "none",
+      backgroundColor: "#fff",
     },
     simpleModal: {
       height: '100%',
       width: '100%',
-
+    },
+    content: {
+      textAlign: "justify"
+    },
+    titleFlavors: {
+      fontWeight: "300",
+      fontSize: "1.6rem",
+    },
+    price: {
+      color: "#2cb74a",
+      fontSize: "1.5rem",
+    },
+    titleProduct: {
+      fontSize: "2rem",
+      fontWeight: "300",
+    },
+    descriptionProduct: {
+      fontSize: "1rem",
+      fontWeight: "100",
+      textAlign: "justify",
     }
   }));
 
@@ -66,19 +89,17 @@ export default function ModalProduct(props) {
           <button className={classes.button} onClick={actived}><CloseIcon /></button>
           <div id="simple-modal-description" className={classes.simpleModal}>
             <img style={{ width: "300px" }} src={image} />
-            <h2 id="simple-modal-title">{name}</h2>
-            <p>
-              {description}
-            </p>
-            <Divider />
-            <h3 style={{ color: '#6ba449' }}>R$: {price}</h3>
-            <h1>SABORES</h1>
-            <FlavorsList modal={actived} product={props.data} />
+            <div className={classes.content}>
+              <h2 className={classes.titleProduct} id="simple-modal-title">{name}</h2>
+              <p className={classes.descriptionProduct}>{description}</p>
+              <Divider />
+              <h3 className={classes.price}>R$: {price}</h3>
+              <h2 className={classes.titleFlavors}>SABORES</h2>
+              <FlavorsList modal={actived} product={props.data} />
+            </div>
           </div>
-          <p>
-          </p>
         </div>
-      </Modal>
-    </div>
+      </Modal >
+    </div >
   );
 }

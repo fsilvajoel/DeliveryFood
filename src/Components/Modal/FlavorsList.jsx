@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Button from "@material-ui/core/Button";
 import Divider from '@material-ui/core/Divider';
 import { List, ListItemText, ListItem } from '@material-ui/core';
-
+import "./style.scss"
 import { makeStyles } from "@material-ui/core/styles";
 import { setNewProduct } from '../../Redux/Store/CheckoutCart/CheckoutCart'
 import { useForm } from 'react-hook-form';
@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
   iconDelete: {
     fontSize: "10px",
+  },
+  error: {
+    textAlign: "center",
+    color: "red"
   }
 }));
 
@@ -42,12 +46,10 @@ export default function FlavorsList(props) {
       'flavor': flavor,
       'totalPrice': (Number(product.price) + Number(flavor.value)).toFixed(2)
     };
-    // console.log(SelectedProduct)
     dispatch(setNewProduct(SelectedProduct))
     props.modal()
 
   }
-  // console.log('console', useSelector((data) => data.checkoutCartStore.shoppingCart));
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <CardContent>
@@ -55,18 +57,19 @@ export default function FlavorsList(props) {
           {product?.flavors.map((flavor, key) => (
             <>
               <ListItem className={classes.listItem} key={key}>
-                <ListItemText primary={flavor.name} secondary={`+R$: ${flavor.sizes[0].value}`} />
+                <ListItemText className="flavors-list" primary={flavor.name} secondary={`+R$: ${flavor.sizes[0].value}`} />
                 <input
                   type="radio"
                   placeholder="flavors"
                   name='flavor'
                   value={`{"sabor":"${flavor.name}","value": ${flavor.sizes[0].value}}`}
-                  ref={register}
+                  ref={register({ required: true })}
                 />
               </ListItem>
               <Divider />
             </>
           ))}
+          {errors.flavor && <p className={classes.error}>Selecione o sabor desejado</p>}
         </List>
         <CardActions style={{ flexDirection: "row-reverse" }}>
           <Button type="submit" variant="outlined" size="medium">Finalizar</Button>
