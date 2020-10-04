@@ -1,11 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Card, CardContent, CardActions } from "@material-ui/core/";
+// import { Link } from 'react-router-dom'
+import Button from "@material-ui/core/Button";
+import { List, ListItemText, ListItem } from '@material-ui/core';
+import { useForm } from 'react-hook-form';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { setDelivery } from '../../Redux/Store/CheckoutCart/CheckoutCart'
+import { useDispatch } from 'react-redux'
 
-function CardDeliveryMethod() {
+export default function DeliveryMethod() {
+  const { register, handleSubmit, errors } = useForm();
+  const [check, setCheck] = useState(false)
+  const dispatch = useDispatch()
+  const onSubmit = data => {
+    dispatch(setDelivery(data))
+    console.log(data);
+    setCheck(true);
+  }
+  console.log(errors);
+
   return (
-    <>
-      <h1>DELIVERY METHOD</h1>
-    </>
+    <Card >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <CardContent>
+          <List disablePadding>
+            <ListItem>
+              <input name="DeliveryMethod" type="radio" value="delivery" ref={register({ required: true })} />
+              <ListItemText primary="Tele Entrega" />
+            </ListItem>
+            <ListItem>
+              <input name="DeliveryMethod" type="radio" value="withdrawal" ref={register({ required: true })} />
+              <ListItemText primary="Retirar no restaurante" />
+            </ListItem>
+          </List>
+        </CardContent>
+        <CardActions style={{ flexDirection: "row-reverse" }}>
+          <Button type="submit" variant="outlined" size="small">Confirma</Button>
+          {check === true &&
+            <CheckCircleIcon color="action" />
+          }
+        </CardActions>
+      </form>
+    </Card>
   );
 }
-
-export default CardDeliveryMethod;
