@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import { useDispatch, useSelector } from 'react-redux'
 import { DeleteProduct } from '../../Redux/Store/CheckoutCart/CheckoutCart'
-
+import './style.scss'
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -60,7 +60,7 @@ export default function BagCard() {
                     <DeleteIcon />
                   </IconButton>
                   <ListItemText primary={product.name} secondary={product.desc} />
-                  <h5>{product.totalPrice}</h5>
+                  <h5 className="product-price">{product.totalPrice}</h5>
                 </ListItem>
                 <Divider />
               </>
@@ -69,7 +69,7 @@ export default function BagCard() {
           )}
 
           <ListItem className={classes.listItem}>
-            <ListItemText primary="Total pedido" />
+            <ListItemText className="resume" primary="Total pedido" />
             <Typography variant="subtitle1" className={classes.total}>
               R${total.toFixed(2)}
             </Typography>
