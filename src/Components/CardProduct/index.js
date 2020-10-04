@@ -19,12 +19,23 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     textAlign: 'center',
   },
-  Description: {
+  description: {
     height: '200px',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     WebkitBoxOrient: 'vertical',
     Display: '-webkit-box',
+    textAlign: 'justify',
+  },
+  cardTitle: {
+    fontWeight: '300',
+    fontSize: '1.5rem',
+    textAlign: 'center',
+  },
+  price: {
+    fontWeight: '300',
+    color: '#2cb74a',
+    fontSize: '1.1rem',
   },
 }))
 
@@ -35,9 +46,9 @@ export default function CardProduct(props) {
     <Card className={classes.card}>
       <CardMedia className={classes.cardMedia} image={image} title={name} />
       <CardContent className={classes.CardContent} style={{ minHeight: '250px', height: '260px' }}>
-        <h2>{name}</h2>
-        <span className={classes.Description}>{description}</span>
-        <h3 style={{ color: '#6ba449' }}>R$: {price}</h3>
+        <h2 className={classes.cardTitle}>{name}</h2>
+        <span className={classes.description}>{description}</span>
+        <h3 className={classes.price}>R$: {price}</h3>
       </CardContent>
       <CardActions style={{ justifyContent: 'center' }}>
         <ModalProduct data={props.data} />
