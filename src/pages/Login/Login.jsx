@@ -1,10 +1,7 @@
-import React from 'react'
-import Avatar from '@material-ui/core/Avatar'
+import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
 import Link from '@material-ui/core/Link'
 import Paper from '@material-ui/core/Paper'
 import Box from '@material-ui/core/Box'
@@ -15,6 +12,7 @@ import { useForm } from 'react-hook-form'
 import Copyright from '../../Components/Layout/Copyright'
 import backgroundLogin from './backgroundLogin.jpg'
 import logoMorita from './morita_logo.png'
+import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -48,22 +46,47 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  loading: {
+    // display: 'flex',
+    // '& > * + *': {
+    // marginLeft: theme.spacing(2),
+    zIndex: "2",
+    backgroundColor: "#1f1c1cb2",
+    color: "#fff",
+    height: "100%",
+    width: "100%",
+    position: "absolute",
+    top: 0,
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    // marginLeft: "-20px",
+    // }
+  },
 }))
 
 export default function SignInSide() {
   const classes = useStyles()
   const { register, handleSubmit, watch, errors } = useForm()
-  const onSubmit = (data) => console.log(data)
-
+  const onSubmit = (data) => {
+    setLoading(true);
+    console.log(data)
+  }
+  const [loading, setLoading] = useState(false);
   return (
     <Grid className={classes.root} component='main' container>
       <CssBaseline />
       <Grid className={classes.image} item md={7} sm={4} xs={false} />
+      {loading &&
+        <div className={classes.loading}>
+          <CircularProgress color="secondary" />
+        </div>
+      }
       <Grid component={Paper} elevation={6} item md={5} sm={8} square xs={12}>
         <div className={classes.paper}>
-          {/* <Avatar className={classes.avatar}> */}
-          <img className={classes.logo} src={logoMorita} />
-          {/* </Avatar> */}
+          <img className={classes.logo} src={logoMorita} alt="Logo" />
           <h1 className={classes.title}>Entrar</h1>
           <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
             <TextField
