@@ -95,20 +95,16 @@ export default function SignInSide() {
               autoComplete='email'
               autoFocus
               fullWidth
-              // id='email'
               label='Endereço de E-mail'
               margin='normal'
               name='username'
               required
               variant='outlined'
               inputRef={register}
-            // ref={register()}
             />
-            {/* {errors.email && <span>Informe seu email</span>} */}
             <TextField
               autoComplete='current-password'
               fullWidth
-              // id='password'
               label='Senha'
               margin='normal'
               name='password'
@@ -116,7 +112,6 @@ export default function SignInSide() {
               type='password'
               variant='outlined'
               inputRef={register}
-            // ref={register}
             />
             {errors.password && <span>Informe sua senha</span>}
             <Button className={classes.submit} color='primary' fullWidth type='submit' variant='contained'>
