@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   img: {
-    // display: "flex",
     display: '-webkit-flex',
     alignContent: 'center',
     height: '100px',
@@ -24,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     marginLeft: '25px',
     marginTop: '10px',
-    borderRadius: '50%'
+    borderRadius: '50%',
+    userDrag: 'none'
   },
   title: {
     textAlign: 'center',
