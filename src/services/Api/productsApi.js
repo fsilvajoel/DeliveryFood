@@ -7,7 +7,7 @@ import { apiUrl } from './apiConstants'
 // const response = await fetch("https://delivery.growtechnologies.com.br/morita/produtos/");
 
 export const getAllProductsData = async () => {
-  const response = await fetch(`${apiUrl}/`)
+  const response = await fetch(`${apiUrl}/morita/produtos/`)
   const data = await response.json()
   // console.log(data)
   return data

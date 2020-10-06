@@ -13,6 +13,7 @@ import Copyright from '../../Components/Layout/Copyright'
 import backgroundLogin from './backgroundLogin.jpg'
 import logoMorita from './morita_logo.png'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { login } from '../../services/Api/loginApi'
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -71,8 +72,9 @@ export default function SignInSide() {
   const classes = useStyles()
   const { register, handleSubmit, watch, errors } = useForm()
   const onSubmit = (data) => {
-    setLoading(true);
+    // setLoading(true);
     console.log(data)
+    login(data)
   }
   const [loading, setLoading] = useState(false);
   return (
@@ -96,7 +98,7 @@ export default function SignInSide() {
               // id='email'
               label='Endereço de E-mail'
               margin='normal'
-              name='email'
+              name='username'
               required
               variant='outlined'
               inputRef={register}
