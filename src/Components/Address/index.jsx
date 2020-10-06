@@ -1,10 +1,20 @@
 import React from "react";
 import Popover from "@material-ui/core/Popover";
 import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
-import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
+import ExploreIcon from '@material-ui/icons/Explore';
 import { IconButton } from "@material-ui/core";
 import AdressCard from "./Card";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    margin: "4px",
+    fontSize: "1.5rem",
+  },
+}))
 export default function PopoverPopupState() {
+  const classes = useStyles();
+
   return (
     <PopupState variant="popover" popupId="demo-popup-popover">
       {popupState => (
@@ -14,8 +24,10 @@ export default function PopoverPopupState() {
             color="inherit"
             {...bindTrigger(popupState)}
           >
-            Endereço
-            <LocalMallOutlinedIcon />
+            <span>
+              Endereço
+            </span>
+            <ExploreIcon className={classes.icon} />
           </IconButton>
           <Popover
             {...bindPopover(popupState)}
@@ -28,10 +40,7 @@ export default function PopoverPopupState() {
               horizontal: "center"
             }}
           >
-            {/* <Box p={2}> */}
             <AdressCard />
-            {/* <Typography>The content of the Popover.</Typography> */}
-            {/* </Box> */}
           </Popover>
         </div>
       )}
