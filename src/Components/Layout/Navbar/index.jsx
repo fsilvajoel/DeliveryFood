@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Address from '../../Address'
 import AppBar from '@material-ui/core/AppBar';
 import Badge from '@material-ui/core/Badge';
@@ -10,20 +9,25 @@ import InputBase from '@material-ui/core/InputBase';
 import { Link } from 'react-router-dom'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-// import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCart from '../../ShoppingCart'
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import logo from '../logo.png'
 
+import SearchIcon from '@material-ui/icons/Search';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import EditIcon from '@material-ui/icons/Edit';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
+  },
+  logo: {
+    height: "2.3rem",
   },
   title: {
     display: 'none',
@@ -40,10 +44,8 @@ const useStyles = makeStyles((theme) => ({
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    // width: '50%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
-      // width: 'auto',
     },
   },
   searchIcon: {
@@ -58,6 +60,12 @@ const useStyles = makeStyles((theme) => ({
   inputRoot: {
     color: 'inherit',
   },
+  link: {
+    textDecoration: "none",
+  },
+  label: {
+    lineHeight: 3
+  },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -67,6 +75,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       width: '20ch',
     },
+  },
+  icon: {
+    margin: "4px",
+    fontSize: "1.5rem",
   },
   sectionDesktop: {
     display: 'none',
@@ -118,13 +130,30 @@ export default function NavBar() {
       open={isMenuOpen}
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
     >
-      <Link to="/pedidos">
-        <MenuItem>Pedidos</MenuItem>
-      </Link>
-      <Link to="/account">
-        <MenuItem onClick={handleMenuClose}>Editar Dados</MenuItem>
-      </Link>
-      <MenuItem onClick={handleMenuClose}>Sair</MenuItem>
+      <MenuItem>
+        <Link className={classes.link} to="/pedidos">
+          <EmojiPeopleIcon className={classes.icon} />
+          <label className={classes.label}>
+            Pedidos
+            </label>
+        </Link>
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link className={classes.link} to="/account">
+          <EditIcon className={classes.icon} />
+          <label className={classes.label}>
+            Editar Dados
+          </label>
+        </Link>
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link className={classes.link} to="">
+          <ExitToAppIcon className={classes.icon} />
+          <label className={classes.label}>
+            Sair
+          </label>
+        </Link>
+      </MenuItem>
     </Menu>
   );
 
@@ -140,29 +169,34 @@ export default function NavBar() {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
     >
       <MenuItem>
-        <IconButton
-          aria-label="show 11 new notifications"
-          color="inherit"
-        >
-          <Badge
-            badgeContent={11}
-            color="secondary"
-          >
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
+        <Address />
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          aria-label="account of current user"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
+      <MenuItem>
+        <ShoppingCart />
+      </MenuItem>
+      <MenuItem>
+        <Link className={classes.link} to="/pedidos">
+          <EmojiPeopleIcon className={classes.icon} />
+          <label className={classes.label}>
+            Pedidos
+            </label>
+        </Link>
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link className={classes.link} to="/account">
+          <EditIcon className={classes.icon} />
+          <label className={classes.label}>
+            Editar Dados
+          </label>
+        </Link>
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link className={classes.link} to="">
+          <ExitToAppIcon className={classes.icon} />
+          <label className={classes.label}>
+            Sair
+          </label>
+        </Link>
       </MenuItem>
     </Menu>
   );
@@ -171,22 +205,9 @@ export default function NavBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          {/* <IconButton
-            aria-label="open drawer"
-            className={classes.menuButton}
-            color="inherit"
-            edge="start"
-          > */}
-          {/* <MenuIcon /> */}
-          {/* </IconButton> */}
-          <Typography
-            className={classes.title}
-            noWrap
-            variant="h6"
-          >
-            DeliveryFood
-          </Typography>
-
+          <Link to="/">
+            <img className={classes.logo} src={logo} alt="logo" />
+          </Link>
           <div className={classes.grow}>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -214,7 +235,7 @@ export default function NavBar() {
               onClick={handleProfileMenuOpen}
             >
               Perfil
-              <AccountCircle />
+              <AccountCircleIcon className={classes.icon} />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
@@ -225,7 +246,7 @@ export default function NavBar() {
               color="inherit"
               onClick={handleMobileMenuOpen}
             >
-              <MoreIcon />
+              <MoreVertIcon />
             </IconButton>
           </div>
         </Toolbar>

@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "18rem",
   },
+  icon: {
+    margin: "4px",
+    fontSize: "1.5rem",
+  },
 }));
 
 
@@ -35,7 +39,7 @@ export default function PopoverPopupState() {
               color="secondary"
             >
               Sacola
-            <LocalMallOutlinedIcon />
+            <LocalMallOutlinedIcon className={classes.icon} />
             </Badge>
           </IconButton>
           <Popover
