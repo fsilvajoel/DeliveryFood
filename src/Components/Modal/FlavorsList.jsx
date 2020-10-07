@@ -2,7 +2,6 @@ import React from "react";
 import { CardActions, CardContent } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux'
 import Button from "@material-ui/core/Button";
-import Divider from '@material-ui/core/Divider';
 import { List, ListItemText, ListItem } from '@material-ui/core';
 import "./style.scss"
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,6 +11,7 @@ import { useForm } from 'react-hook-form';
 const useStyles = makeStyles((theme) => ({
   listItem: {
     padding: theme.spacing(1, 0),
+    borderBottom: "1px solid #e8e8e8",
   },
   total: {
     fontWeight: 700,
@@ -66,7 +66,6 @@ export default function FlavorsList(props) {
                   ref={register({ required: true })}
                 />
               </ListItem>
-              <Divider />
             </>
           ))}
           {errors.flavor && <p className={classes.error}>Selecione o sabor desejado</p>}

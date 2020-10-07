@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 
 import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
-import { Divider } from '@material-ui/core';
 import FlavorsList from './FlavorsList';
 import Modal from '@material-ui/core/Modal';
 // import ModalBody from './ModalBody'
 import { makeStyles } from '@material-ui/core/styles';
 
 export default function ModalProduct(props) {
-  const { name, obs, image, price, description, flavors } = props.data
+  const { name, obs, image, price, description } = props.data
 
   // getModalStyle is not a pure function, we roll the style only on the first render
   const getModalStyle = () => {
@@ -92,7 +91,6 @@ export default function ModalProduct(props) {
             <div className={classes.content}>
               <h2 className={classes.titleProduct} id="simple-modal-title">{name}</h2>
               <p className={classes.descriptionProduct}>{description}</p>
-              <Divider />
               <h3 className={classes.price}>R$: {price}</h3>
               <h2 className={classes.titleFlavors}>SABORES</h2>
               <FlavorsList modal={actived} product={props.data} />

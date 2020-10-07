@@ -6,7 +6,7 @@ import { List, ListItemText, ListItem } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { setPayment } from '../../Redux/Store/CheckoutCart/CheckoutCart'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 export default function CardPaymentMethod() {
   const { register, handleSubmit, watch, errors } = useForm();
