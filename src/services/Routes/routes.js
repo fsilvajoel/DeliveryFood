@@ -30,13 +30,13 @@ const routeList = [
     private: false,
   },
   {
-    path: '/SignUp',
+    path: '/signup',
     component: SignUp,
     exact: true,
     private: false,
   },
   {
-    path: '/Checkout',
+    path: '/checkout',
     component: Checkout,
     exact: true,
     private: false,
