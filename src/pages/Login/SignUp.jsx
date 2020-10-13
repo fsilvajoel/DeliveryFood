@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
+import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
 import Link from '@material-ui/core/Link'
 import Paper from '@material-ui/core/Paper'
-import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import { useForm } from 'react-hook-form'
@@ -13,7 +13,7 @@ import Copyright from '../../Components/Layout/Copyright'
 import backgroundLogin from './images/backgroundLogin.jpg'
 import logoMorita from './images/morita_logo.png'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import { login } from '../../services/Api/loginApi'
+import { registration } from '../../services/Api/loginApi'
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -32,20 +32,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   logo: {
-    height: '30vh',
-  },
-
-  title: {
-    fontWeight: 200,
-    fontSize: '3rem',
-    marginTop: '3rem',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
+    height: '20vh',
   },
   loading: {
     zIndex: '2',
@@ -61,21 +48,32 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title: {
+    fontWeight: 200,
+    fontSize: '3rem',
+    marginTop: '3rem',
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
 }))
 
-export default function SignInSide() {
+export default function SignUp() {
   const classes = useStyles()
   const { register, handleSubmit, watch, errors } = useForm()
   const onSubmit = (data) => {
     // setLoading(true);
     console.log(data)
-    login(data)
+    registration(data)
   }
   const [loading, setLoading] = useState(false)
   return (
-    <Grid className={classes.root} component='main' container>
+    <Grid container component='main' className={classes.root}>
       <CssBaseline />
-      <Grid className={classes.image} item md={7} sm={4} xs={false} />
       {loading && (
         <div className={classes.loading}>
           <CircularProgress color='secondary' />
@@ -84,15 +82,26 @@ export default function SignInSide() {
       <Grid component={Paper} elevation={6} item md={5} sm={8} square xs={12}>
         <div className={classes.paper}>
           <img className={classes.logo} src={logoMorita} alt='Logo' />
-          <h1 className={classes.title}>Entrar</h1>
+          <h1 className={classes.title}>Cadastrar-se</h1>
           <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+            <TextField
+              autoComplete='Nome'
+              autoFocus
+              fullWidth
+              label='Crie um username. Ex: @morita'
+              margin='normal'
+              name='username'
+              required
+              variant='outlined'
+              inputRef={register}
+            />
             <TextField
               autoComplete='email'
               autoFocus
               fullWidth
               label='Endereço de E-mail'
               margin='normal'
-              name='username'
+              name='email'
               required
               variant='outlined'
               inputRef={register}
@@ -102,7 +111,18 @@ export default function SignInSide() {
               fullWidth
               label='Senha'
               margin='normal'
-              name='password'
+              name='password1'
+              required
+              type='password'
+              variant='outlined'
+              inputRef={register}
+            />
+            <TextField
+              autoComplete='current-password'
+              fullWidth
+              label='Confirmar Senha'
+              margin='normal'
+              name='password2'
               required
               type='password'
               variant='outlined'
@@ -110,26 +130,13 @@ export default function SignInSide() {
             />
             {errors.password && <span>Informe sua senha</span>}
             <Button className={classes.submit} color='primary' fullWidth type='submit' variant='contained'>
-              Entrar
+              Pronto
             </Button>
-            {/* <Button
-              color='blue'
-              fullWidth
-              // onClick={handleSignIn}
-              size='large'
-              variant='contained'>
-              <FacebookIcon className={classes.socialIcon} />
-              Login pelo Facebook
-            </Button> */}
             <Grid container>
-              <Grid item xs>
-                <Link href='#' variant='body2'>
-                  Esqueceu sua senha?
-                </Link>
-              </Grid>
+              <Grid item xs></Grid>
               <Grid item>
-                <Link href='/signup' variant='body2'>
-                  Não possui conta? Criar
+                <Link href='/login' variant='body2'>
+                  Já cadastrado? Entrar!
                 </Link>
               </Grid>
             </Grid>
@@ -139,6 +146,7 @@ export default function SignInSide() {
           </form>
         </div>
       </Grid>
+      <Grid item xs={false} sm={4} md={7} className={classes.image} />
     </Grid>
   )
 }
