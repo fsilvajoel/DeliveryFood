@@ -9,6 +9,11 @@ const initialState = {
   deliveryMethod: [],
 }
 
+const dropProduct = (list, position) => {
+  list.splice(position, 1)
+  return list
+}
+
 export default function checkoutCart(state = initialState, action) {
   switch (action.type) {
     case SET_PRODUCT:
@@ -27,12 +32,9 @@ export default function checkoutCart(state = initialState, action) {
         deliveryMethod: action.payload,
       }
     case DELETE_SHOPPING_CART:
-      // state.shoppingCart.splice(action.payload, 1)
-      console.log('state.shoppingCart', state.shoppingCart)
-      console.log('initialState', initialState)
-      // dropElement(action.payload)
       return {
-        ...state.shoppingCart,
+        ...state,
+        shoppingCart: [dropProduct(state.shoppingCart, action.payload)],
       }
     default:
       return state
