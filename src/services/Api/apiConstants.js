@@ -1,2 +1,2 @@
 export const apiUrl = 'https://delivery.growtechnologies.com.br/'
-// export const apiUrl = 'http://localhost:3000';
+export const parceiro = 'morita'
