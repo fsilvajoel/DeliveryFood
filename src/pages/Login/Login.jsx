@@ -64,14 +64,20 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function SignInSide() {
+  const [message, setMessage] = useState('')
+  const [loading, setLoading] = useState(false)
   const classes = useStyles()
   const { register, handleSubmit, watch, errors } = useForm()
   const onSubmit = (data) => {
     // setLoading(true);
     console.log(data)
-    login(data)
+    login(data).then((payload) => {
+      if (payload === 'err') {
+        setMessage('Usuário ou senha Incorretos!')
+      }
+      console.log('payload', payload)
+    })
   }
-  const [loading, setLoading] = useState(false)
   return (
     <Grid className={classes.root} component='main' container>
       <CssBaseline />
@@ -109,6 +115,7 @@ export default function SignInSide() {
               inputRef={register}
             />
             {errors.password && <span>Informe sua senha</span>}
+            {message && <h3>{message}</h3>}
             <Button className={classes.submit} color='primary' fullWidth type='submit' variant='contained'>
               Entrar
             </Button>
