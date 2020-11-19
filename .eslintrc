@@ -16,11 +16,14 @@
       "warn",
       {
         "newlinesBetween": "always",
-        "groups": ["/^react/", "module", "/^@shared/", ["parent", "sibling", "index"]],
+        "groups": ["/^react/", "module", "/^@shared/", "/^[~]/", ["parent", "sibling", "index"]],
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ],
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "camelcase": 0,
+    "react/prop-types": 0,
+    "no-nested-ternary": 0
   },
   "env": {
     "browser": true,
@@ -35,6 +38,12 @@
     "sourceType": "module"
   },
   "settings": {
-    "react": { "version": "detect" }
+    "react": { "version": "detect" },
+    "import/resolver": {
+      "babel-plugin-root-import": {
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "src"
+      }
+    }
   }
 }
