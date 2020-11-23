@@ -1,36 +1,37 @@
 // import jwt from 'jsonwebtoken'
 
-import { getStorageItem, setStorageItem, removeStorageItem } from '../../services/storage/index'
+import { getStorageItem, setStorageItem, removeStorageItem } from '../../services/storage/index';
 
 const isAuthenticated = () => {
-  const token = getStorageItem('token-info')
-  return token && token.expirationDate > Date.now()
-}
+  const token = getStorageItem('token-info');
+  return token && token.expirationDate > Date.now();
+};
 
 const updateToken = (apiResponseToken) => {
-  const token = apiResponseToken.access_token
-  const currentDate = new Date()
-  const expirationDate = currentDate.setTime(currentDate.getTime() + apiResponseToken.expires_in * 1000)
-  const newTokenData = { token, expirationDate }
-  setStorageItem('token-info', newTokenData)
-  return newTokenData
-}
+  const token = apiResponseToken.key;
+  const currentDate = new Date();
+  const expirationDate = currentDate.setTime(currentDate.getTime() + 3200 * 1000);
+  const newTokenData = { token, expirationDate };
+  setStorageItem('token-info', newTokenData);
+  console.log('RETORNO', newTokenData);
+  return newTokenData;
+};
 
 const logout = () => {
-  removeStorageItem('token-info')
-  removeStorageItem('user')
-}
+  removeStorageItem('token-info');
+  removeStorageItem('user');
+};
 
 const getCurrentUser = () => {
-  return getStorageItem('user')
-}
+  return getStorageItem('user');
+};
 
 const isAuthorized = (roles) => {
   if (roles.find((role) => role === '*')) {
-    return true
+    return true;
   }
-  return false
-}
+  return false;
+};
 
 // export const getUserData = () => {
 //   const user = getStorageItem('user')
@@ -81,4 +82,4 @@ const isAuthorized = (roles) => {
 //   return false
 // }
 
-export { isAuthenticated, updateToken, logout, getCurrentUser, isAuthorized }
+export { isAuthenticated, updateToken, logout, getCurrentUser, isAuthorized };
