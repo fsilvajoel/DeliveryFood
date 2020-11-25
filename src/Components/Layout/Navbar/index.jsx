@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 
-import Address from '../../Address'
+import Address from '../../Address';
 import AppBar from '@material-ui/core/AppBar';
-import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import ShoppingCart from '../../ShoppingCart'
+import ShoppingCart from '../../ShoppingCart';
 import Toolbar from '@material-ui/core/Toolbar';
-import logo from '../logo.png'
-
+import logo from '../logo.png';
+import { logout } from '../../../modules/auth/autorization';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import EditIcon from '@material-ui/icons/Edit';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import { useForm } from 'react-hook-form';
+import Button from '@material-ui/core/Button';
+import { getProductBySearch } from '../../../services/Api/productsApi';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -27,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   logo: {
-    height: "2.3rem",
+    height: '2.3rem',
   },
   title: {
     display: 'none',
@@ -61,10 +63,10 @@ const useStyles = makeStyles((theme) => ({
     color: 'inherit',
   },
   link: {
-    textDecoration: "none",
+    textDecoration: 'none',
   },
   label: {
-    lineHeight: 3
+    lineHeight: 3,
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -77,8 +79,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   icon: {
-    margin: "4px",
-    fontSize: "1.5rem",
+    margin: '4px',
+    fontSize: '1.5rem',
   },
   sectionDesktop: {
     display: 'none',
@@ -95,6 +97,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NavBar() {
+  const [show, setShow] = useState(false);
+  const { register, handleSubmit } = useForm();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -118,6 +122,11 @@ export default function NavBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+  const onSearch = (data) => {
+    getProductBySearch(data.search);
+    setShow(false);
+    console.log('pesquisa', data);
+  };
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -128,30 +137,23 @@ export default function NavBar() {
       keepMounted
       onClose={handleMenuClose}
       open={isMenuOpen}
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-    >
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
       <MenuItem>
         <Link className={classes.link} to="/pedidos">
           <EmojiPeopleIcon className={classes.icon} />
-          <label className={classes.label}>
-            Pedidos
-            </label>
+          <label className={classes.label}>Pedidos</label>
         </Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <Link className={classes.link} to="/account">
           <EditIcon className={classes.icon} />
-          <label className={classes.label}>
-            Editar Dados
-          </label>
+          <label className={classes.label}>Editar Dados</label>
         </Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <Link className={classes.link} to="">
+        <Link className={classes.link} onClick={logout}>
           <ExitToAppIcon className={classes.icon} />
-          <label className={classes.label}>
-            Sair
-          </label>
+          <label className={classes.label}>Sair</label>
         </Link>
       </MenuItem>
     </Menu>
@@ -166,8 +168,7 @@ export default function NavBar() {
       keepMounted
       onClose={handleMobileMenuClose}
       open={isMobileMenuOpen}
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-    >
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
       <MenuItem>
         <Address />
       </MenuItem>
@@ -177,25 +178,19 @@ export default function NavBar() {
       <MenuItem>
         <Link className={classes.link} to="/pedidos">
           <EmojiPeopleIcon className={classes.icon} />
-          <label className={classes.label}>
-            Pedidos
-            </label>
+          <label className={classes.label}>Pedidos</label>
         </Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
         <Link className={classes.link} to="/account">
           <EditIcon className={classes.icon} />
-          <label className={classes.label}>
-            Editar Dados
-          </label>
+          <label className={classes.label}>Editar Dados</label>
         </Link>
       </MenuItem>
       <MenuItem onClick={handleMenuClose}>
-        <Link className={classes.link} to="">
+        <Link className={classes.link} to="" onClick={logout}>
           <ExitToAppIcon className={classes.icon} />
-          <label className={classes.label}>
-            Sair
-          </label>
+          <label className={classes.label}>Sair</label>
         </Link>
       </MenuItem>
     </Menu>
@@ -210,17 +205,27 @@ export default function NavBar() {
           </Link>
           <div className={classes.grow}>
             <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-                placeholder="Pesquisar"
-              />
+              <form onSubmit={handleSubmit(onSearch)} onClick={() => setShow(true)}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  inputProps={{ 'aria-label': 'search' }}
+                  placeholder="Pesquisar"
+                  name="search"
+                  inputRef={register}
+                  type="text"
+                />
+                {show && (
+                  <Button color="primary" type="submit" variant="contained">
+                    <SearchIcon /> Pesquisar
+                  </Button>
+                )}
+              </form>
             </div>
           </div>
           <div className={classes.sectionDesktop}>
@@ -232,8 +237,7 @@ export default function NavBar() {
               aria-label="account of current user"
               color="inherit"
               edge="end"
-              onClick={handleProfileMenuOpen}
-            >
+              onClick={handleProfileMenuOpen}>
               Perfil
               <AccountCircleIcon className={classes.icon} />
             </IconButton>
@@ -244,8 +248,7 @@ export default function NavBar() {
               aria-haspopup="true"
               aria-label="show more"
               color="inherit"
-              onClick={handleMobileMenuOpen}
-            >
+              onClick={handleMobileMenuOpen}>
               <MoreVertIcon />
             </IconButton>
           </div>
@@ -253,6 +256,6 @@ export default function NavBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-    </div >
+    </div>
   );
 }
