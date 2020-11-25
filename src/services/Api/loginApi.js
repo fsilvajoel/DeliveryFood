@@ -9,9 +9,10 @@ export async function login(Userdata) {
     const response = await Axios.post(`${deliveryPathAuth}`, Userdata);
     if (response.data) {
       updateToken(response.data);
+      return true;
     }
   } catch (error) {
-    return Promise.reject(new Error('Falha na autenticação'));
+    return error;
   }
 }
 

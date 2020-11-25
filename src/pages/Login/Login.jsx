@@ -8,12 +8,13 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from 'react-hook-form';
-// import FacebookIcon from '@material-ui/icons/Facebook'
+// import FacebxookIcon from '@material-ui/icons/Facebook'
 import Copyright from '../../Components/Layout/Copyright';
 import backgroundLogin from './images/backgroundLogin.jpg';
 import logoMorita from './images/morita_logo.png';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { login } from '../../services/Api/loginApi';
+import { useHistory } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -64,14 +65,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignInSide() {
+  const history = useHistory();
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    // setLoading(true);
-    console.log(data);
-    login(data);
+    login(data).then((payload) => {
+      if (payload === true) {
+        console.log('entrei');
+        history.push('/delivery');
+      } else {
+        setMessage('Usuário ou senha Incorretos!');
+        console.log(payload);
+      }
+    });
   };
   return (
     <Grid className={classes.root} component="main" container>
@@ -97,6 +105,7 @@ export default function SignInSide() {
               required
               variant="outlined"
               inputRef={register}
+              onClick={() => setMessage('')}
             />
             <TextField
               autoComplete="current-password"
@@ -108,21 +117,13 @@ export default function SignInSide() {
               type="password"
               variant="outlined"
               inputRef={register}
+              onClick={() => setMessage('')}
             />
             {errors.password && <span>Informe sua senha</span>}
-            {message && <h3>{message}</h3>}
+            {message && <span>{message}</span>}
             <Button className={classes.submit} color="primary" fullWidth type="submit" variant="contained">
               Entrar
             </Button>
-            {/* <Button
-              color='blue'
-              fullWidth
-              // onClick={handleSignIn}
-              size='large'
-              variant='contained'>
-              <FacebookIcon className={classes.socialIcon} />
-              Login pelo Facebook
-            </Button> */}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
