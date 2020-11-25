@@ -1,15 +1,13 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // import App from "../../App";
-import Home from '../../pages/Home'
-// import index from '../../pages/index';
-import SignUp from '../../pages/Login/SignUp'
-import Login from '../../pages/Login/Login'
-// import EntranceHub from '../../pages/EntranceHub';
-// import Checkout from '../../Components/CheckoutCart/Checkout'
-import Checkout from '../../pages/OrderCheckout/index'
-import Pedidos from '../../pages/Profile/pedidos'
-import Account from '../../pages/Profile/account'
+import Home from '../../pages/Home';
+import Delivery from '../../pages/Delivery';
+import SignUp from '../../pages/Login/SignUp';
+import Login from '../../pages/Login/Login';
+import Checkout from '../../pages/OrderCheckout/index';
+import Pedidos from '../../pages/Profile/pedidos';
+import Account from '../../pages/Profile/account';
 const routeList = [
   {
     path: '/',
@@ -17,12 +15,12 @@ const routeList = [
     exact: true,
     private: false,
   },
-  // {
-  //   path: '/home',
-  //   component: Home,
-  //   exact: true,
-  //   private: false
-  // },
+  {
+    path: '/delivery',
+    component: Delivery,
+    exact: true,
+    private: false,
+  },
   {
     path: '/login',
     component: Login,
@@ -41,12 +39,6 @@ const routeList = [
     exact: true,
     private: false,
   },
-  // {
-  //   path: '/EntranceHub',
-  //   component: EntranceHub,
-  //   exact: true,
-  //   private: false
-  // },
   {
     path: '/pedidos',
     component: Pedidos,
@@ -59,11 +51,11 @@ const routeList = [
     exact: true,
     private: false,
   },
-]
+];
 
 const RouteBuilder = (route) => {
-  return <Route exact={!!route.exact} path={route.path} render={(props) => <route.component {...props} />} />
-}
+  return <Route exact={!!route.exact} path={route.path} render={(props) => <route.component {...props} />} />;
+};
 
 const Routes = () => (
   <BrowserRouter>
@@ -73,5 +65,5 @@ const Routes = () => (
       ))}
     </Switch>
   </BrowserRouter>
-)
-export default Routes
+);
+export default Routes;

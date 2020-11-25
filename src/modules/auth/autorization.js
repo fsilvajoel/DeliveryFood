@@ -2,12 +2,12 @@
 
 import { getStorageItem, setStorageItem, removeStorageItem } from '../../services/storage/index';
 
-const isAuthenticated = () => {
+export const isAuthenticated = () => {
   const token = getStorageItem('token-info');
   return token && token.expirationDate > Date.now();
 };
 
-const updateToken = (apiResponseToken) => {
+export const updateToken = (apiResponseToken) => {
   const token = apiResponseToken.key;
   const currentDate = new Date();
   const expirationDate = currentDate.setTime(currentDate.getTime() + 3200 * 1000);
@@ -17,16 +17,16 @@ const updateToken = (apiResponseToken) => {
   return newTokenData;
 };
 
-const logout = () => {
+export const logout = () => {
   removeStorageItem('token-info');
   removeStorageItem('user');
 };
 
-const getCurrentUser = () => {
+export const getCurrentUser = () => {
   return getStorageItem('user');
 };
 
-const isAuthorized = (roles) => {
+export const isAuthorized = (roles) => {
   if (roles.find((role) => role === '*')) {
     return true;
   }
@@ -82,4 +82,4 @@ const isAuthorized = (roles) => {
 //   return false
 // }
 
-export { isAuthenticated, updateToken, logout, getCurrentUser, isAuthorized };
+// export { isAuthenticated, updateToken, logout, getCurrentUser, isAuthorized };
