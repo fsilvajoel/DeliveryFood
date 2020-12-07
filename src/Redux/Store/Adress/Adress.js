@@ -1,26 +1,34 @@
 // types
-export const GET_ADRESS = 'GET_ADRESS'
+export const SET_DISTRICTS = 'SET_DISTRICTS';
+export const SET_CITIES = 'SET_CITIES';
 
 const initialState = {
-  districts: {},
-  cities: {},
-}
+  cities: [],
+  districts: [],
+};
 // reducer
 export default function Adress(state = initialState, action) {
   switch (action.type) {
-    case GET_ADRESS:
-      console.log('resposta do redux', action)
+    case SET_DISTRICTS:
       return {
         ...state,
         districts: action.payload.districts,
+      };
+    case SET_CITIES:
+      return {
+        ...state,
         cities: action.payload.cities,
-      }
+      };
     default:
-      return state
+      return state;
   }
 }
 // actions
-export const getAllAdress = (districts, cities) => ({
-  type: GET_ADRESS,
-  payload: [districts, cities],
-})
+export const setDistricts = (districts) => ({
+  type: SET_DISTRICTS,
+  payload: districts,
+});
+export const setCities = (cities) => ({
+  type: SET_CITIES,
+  payload: cities,
+});
