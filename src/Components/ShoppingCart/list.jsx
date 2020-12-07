@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import Divider from '@material-ui/core/Divider'
-import DeleteIcon from '@material-ui/icons/Delete'
-import IconButton from '@material-ui/core/IconButton'
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 
-import { useDispatch, useSelector } from 'react-redux'
-import { DeleteProduct } from '../../Redux/Store/CheckoutCart/CheckoutCart'
-import './style.scss'
+import { useDispatch } from 'react-redux';
+import { DeleteProduct } from '../../Redux/Store/CheckoutCart/CheckoutCart';
+import './style.scss';
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -29,19 +29,21 @@ const useStyles = makeStyles((theme) => ({
   centerText: {
     textAlign: 'center',
   },
-}))
+}));
 
-export default function BagCard() {
-  const dispatch = useDispatch()
-  const products = useSelector((data) => data.checkoutCartStore.shoppingCart)
-  console.log('sacola', products)
-  let total = 0
+export default function BagCard(props) {
+  const { products } = props;
+  const dispatch = useDispatch();
+
+  console.log('sacola', products);
+  // console.log('Dentro da sacola', products.length);
+  let total = 0;
   const dropProduct = (position) => {
-    dispatch(DeleteProduct(position))
-  }
-  const classes = useStyles()
+    dispatch(DeleteProduct(position));
+  };
+  const classes = useStyles();
 
-  useEffect(() => {}, [useSelector((data) => data.checkoutCartStore.shoppingCart)])
+  // useEffect(() => {}, [useSelector((data) => data.checkoutCartStore.shoppingCart)]);
 
   return (
     <List disablePadding>
@@ -52,29 +54,29 @@ export default function BagCard() {
       ) : (
         <>
           {products?.map((product, key) => {
-            total = Number(total) + Number(product.totalPrice)
+            total = Number(total) + Number(product.totalPrice);
             return (
               <>
                 <ListItem className={classes.listItem} key={product.name}>
-                  <IconButton className={classes.iconDelete} onClick={() => dropProduct(key)} aria-label='delete'>
+                  <IconButton className={classes.iconDelete} onClick={() => dropProduct(key)} aria-label="delete">
                     <DeleteIcon />
                   </IconButton>
                   <ListItemText primary={product.name} secondary={product.desc} />
-                  <h5 className='product-price'>{product.totalPrice}</h5>
+                  <h5 className="product-price">{product.totalPrice}</h5>
                 </ListItem>
                 <Divider />
               </>
-            )
+            );
           })}
 
           <ListItem className={classes.listItem}>
-            <ListItemText className='resume' primary='Total pedido' />
-            <Typography variant='subtitle1' className={classes.total}>
+            <ListItemText className="resume" primary="Total pedido" />
+            <Typography variant="subtitle1" className={classes.total}>
               R${total.toFixed(2)}
             </Typography>
           </ListItem>
         </>
       )}
     </List>
-  )
+  );
 }
