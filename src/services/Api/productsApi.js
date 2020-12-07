@@ -10,7 +10,11 @@ export const getAllProductsData = async () => {
 
 export async function getProductBySearch(search) {
   try {
-    const response = await axios.get(`${apiUrl}morita/produtos&q='${search}'`);
+    const response = await axios.get(`${apiUrl}morita/produtos/`, {
+      params: {
+        q: search,
+      },
+    });
     if (response.data) {
       console.log('retorno do GetProductBySearch', response.data);
       return true;

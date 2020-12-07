@@ -11,5 +11,3 @@ export const getStorageItem = (key) => {
 export const removeStorageItem = (key) => {
   window.sessionStorage.removeItem(key);
 };
-
-// export { setStorageItem, getStorageItem, removeStorageItem }
