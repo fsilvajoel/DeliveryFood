@@ -8,7 +8,6 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from 'react-hook-form';
-// import FacebxookIcon from '@material-ui/icons/Facebook'
 import Copyright from '../../Components/Layout/Copyright';
 import backgroundLogin from './images/backgroundLogin.jpg';
 import logoMorita from './images/morita_logo.png';

@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import BannerIntro from './BannerIntro'
-import CardProduct from '../../Components/CardProduct'
-import Container from '@material-ui/core/Container'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Footer from './../../Components/Layout/Footer'
-import Grid from '@material-ui/core/Grid'
+import BannerIntro from './BannerIntro';
+import CardProduct from '../../Components/CardProduct';
+import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Footer from './../../Components/Layout/Footer';
+import Grid from '@material-ui/core/Grid';
 //components
-import NavBar from '../../Components/Layout/Navbar'
-import TabCategories from '../../Components/Layout/Tab/index'
-import { getAllProducts } from '../../Redux/Store/Products/ProductsDucks'
-import { getAllAdress } from '../../Redux/Store/Adress/Adress'
+import NavBar from '../../Components/Layout/Navbar';
+import TabCategories from '../../Components/Layout/Tab/index';
+import { getAllProducts } from '../../Redux/Store/Products/ProductsDucks';
+import { setDistricts, setCities } from '../../Redux/Store/Adress/Adress';
 //api
-import { getAdressData } from '../../services/Api/adress'
-import { getAllProductsData } from '../../services/Api/productsApi'
-import { makeStyles } from '@material-ui/core/styles'
+import { getAdressData } from '../../services/Api/adress';
+import { getAllProductsData } from '../../services/Api/productsApi';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -48,41 +48,42 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
-}))
+}));
 
 export default function ListProducts() {
-  const dispatch = useDispatch()
-  const classes = useStyles()
-  const [showCategory, setshowCategory] = useState()
+  const dispatch = useDispatch();
+  const classes = useStyles();
+  const [showCategory, setshowCategory] = useState();
 
-  const food = useSelector((data) => data.productsStore.food)
-  const drink = useSelector((data) => data.productsStore.drink)
+  const food = useSelector((data) => data.productsStore.food);
+  const drink = useSelector((data) => data.productsStore.drink);
 
-  let showProducts = useSelector((data) => data.productsStore.current_category)
+  let showProducts = useSelector((data) => data.productsStore.current_category);
 
   const recieveAllProducts = async () => {
-    const result = await getAllProductsData()
-    dispatch(getAllProducts(result))
-  }
+    const result = await getAllProductsData();
+    dispatch(getAllProducts(result));
+  };
 
   const recieveAllAdressData = async () => {
-    const districts = await getAdressData('districts')
-    const cities = await getAdressData('cities')
-    console.log('DISTRITOS', districts)
-    console.log('cidades', cities)
-    dispatch(getAllAdress(districts, cities))
-  }
+    const districts = await getAdressData('districts');
+    const cities = await getAdressData('cities');
+    console.log('DISTRITOS', districts);
+    console.log('cidades', cities);
+    dispatch(setCities(cities));
+    dispatch(setDistricts(districts));
+  };
 
   function handleShowProduct() {
-    setshowCategory(food?.categories?.filter((category) => category.slug === showProducts))
+    setshowCategory(food?.categories?.filter((category) => category.slug === showProducts));
   }
 
   useEffect(() => {
     //atualizar quando receber dado novo de categoria selecionada
-    recieveAllProducts()
-    handleShowProduct()
-    recieveAllAdressData()
-  }, [useSelector((data) => data.productsStore.current_category)])
+    recieveAllProducts();
+    handleShowProduct();
+    recieveAllAdressData();
+  }, [useSelector((data) => data.productsStore.current_category)]);
 
   return (
     <>
@@ -90,7 +91,7 @@ export default function ListProducts() {
       <NavBar />
       <main>
         <TabCategories food={food?.categories} drink={drink?.categories} />
-        <Container className={classes.cardGrid} maxWidth='md'>
+        <Container className={classes.cardGrid} maxWidth="md">
           {showProducts.length !== undefined ? (
             <Grid container spacing={4}>
               {showCategory?.map((category) =>
@@ -110,5 +111,5 @@ export default function ListProducts() {
       </main>
       <Footer />
     </>
-  )
+  );
 }
