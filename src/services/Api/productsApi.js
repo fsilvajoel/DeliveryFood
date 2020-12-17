@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { apiUrl } from './apiConstants';
+import { apiUrl, partner } from './apiConstants';
 
 export const getAllProductsData = async () => {
-  const response = await fetch(`${apiUrl}morita/produtos/`);
+  const response = await fetch(`${apiUrl}${partner}/produtos/`);
   const data = await response.json();
   // console.log(data)
   return data;
@@ -10,7 +10,7 @@ export const getAllProductsData = async () => {
 
 export async function getProductBySearch(search) {
   try {
-    const response = await axios.get(`${apiUrl}morita/produtos/`, {
+    const response = await axios.get(`${apiUrl}${partner}/produtos/`, {
       params: {
         q: search,
       },
@@ -22,4 +22,10 @@ export async function getProductBySearch(search) {
   } catch (error) {
     return error;
   }
+}
+
+export async function getComplements() {
+  const response = await axios.get(`${apiUrl}${partner}/complements/`);
+  console.log('resposta COMPLEMENTOS', response.data);
+  return response.data;
 }
