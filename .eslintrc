@@ -3,6 +3,7 @@
   "extends": ["airbnb", "prettier"],
   "plugins": ["import", "eslint-plugin-import-helpers"],
   "rules": {
+    "react/jsx-one-expression-per-line": "literal",
     "react/jsx-closing-bracket-location": [
       "error",
       {
@@ -23,7 +24,9 @@
     "react/jsx-props-no-spreading": 0,
     "camelcase": 0,
     "react/prop-types": 0,
-    "no-nested-ternary": 0
+    "no-nested-ternary": 0,
+    "import/prefer-default-export": "off",
+    "no-param-reassign": "warn"
   },
   "env": {
     "browser": true,
