@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { apiUrl } from './apiConstants';
-import { updateToken } from '../../modules/auth/autorization';
+import { updateToken } from '../../../core/auth/autorization';
 const deliveryPathAuth = `${apiUrl}rest-auth/login/`;
 const deliveryPathRegistration = `${apiUrl}/rest-auth/registration/`;
 

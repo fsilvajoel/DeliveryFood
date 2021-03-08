@@ -1,6 +1,6 @@
 // import jwt from 'jsonwebtoken'
 
-import { getStorageItem, setStorageItem, removeStorageItem } from '../../services/storage/index';
+import { getStorageItem, setStorageItem, removeStorageItem } from '../../shared/storage/index';
 
 export const isAuthenticated = () => {
   const token = getStorageItem('token-info');

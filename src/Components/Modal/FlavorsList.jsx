@@ -5,8 +5,9 @@ import Button from '@material-ui/core/Button';
 import { List, ListItemText, ListItem } from '@material-ui/core';
 import './style.scss';
 import { makeStyles } from '@material-ui/core/styles';
-import { setNewProduct } from '../../Redux/Store/CheckoutCart/CheckoutCart';
+import { setNewProduct } from '../../shared/Redux/Store/CheckoutCart/CheckoutCart';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   listItem: {
@@ -75,7 +76,7 @@ export default function FlavorsList(props) {
         </List>
         <CardActions style={{ flexDirection: 'row-reverse' }}>
           <Button type="submit" variant="outlined" size="medium">
-            Finalizar
+            Selecionar
           </Button>
         </CardActions>
       </CardContent>

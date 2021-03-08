@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import { List, ListItemText, ListItem } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import { setDelivery } from '../../Redux/Store/CheckoutCart/CheckoutCart';
+import { setDelivery } from '../../shared/Redux/Store/CheckoutCart/CheckoutCart';
 import { useDispatch } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 

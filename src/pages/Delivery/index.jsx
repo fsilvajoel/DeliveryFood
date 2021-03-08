@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import BannerIntro from './BannerIntro';
-import CardProduct from '../../Components/CardProduct';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Footer from './../../Components/Layout/Footer';
+import CardProduct from '../../Components/CardProduct';
+import BannerIntro from './BannerIntro';
 import Grid from '@material-ui/core/Grid';
+import Footer from './../../Components/Layout/Footer';
 //components
 import NavBar from '../../Components/Layout/Navbar';
 import TabCategories from '../../Components/Layout/Tab/index';
-import { getAllProducts } from '../../Redux/Store/Products/ProductsDucks';
-import { setDistricts, setCities } from '../../Redux/Store/Adress/Adress';
+import { getAllProducts } from '../../shared/Redux/Store/Products/ProductsDucks';
+import { setDistricts, setCities } from '../../shared/Redux/Store/Adress/Adress';
 //api
-import { getAdressData } from '../../services/Api/adress';
-import { getAllProductsData } from '../../services/Api/productsApi';
+import { getAdressData } from '../../shared/services/Api/adress';
+import { getAllProductsData } from '../../shared/services/Api/productsApi';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({

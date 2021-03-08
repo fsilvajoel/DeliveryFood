@@ -13,7 +13,7 @@ import Copyright from '../../Components/Layout/Copyright';
 import backgroundLogin from './images/backgroundLogin.jpg';
 import logoMorita from './images/morita_logo.png';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { registration } from '../../services/Api/loginApi';
+import { registration } from '../../shared/services/Api/loginApi';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',

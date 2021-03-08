@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default function PopoverPopupState() {
   const classes = useStyles();
   const products = useSelector((data) => data.checkoutCartStore.shoppingCart);
-  useEffect(() => {}, [useSelector((data) => data.checkoutCartStore.shoppingCart)]);
+  useEffect(() => {}, [products]);
   return (
     <PopupState variant="popover" popupId="shopingCart">
       {(popupState) => (

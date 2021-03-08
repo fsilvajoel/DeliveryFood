@@ -12,7 +12,7 @@ import Copyright from '../../Components/Layout/Copyright';
 import backgroundLogin from './images/backgroundLogin.jpg';
 import logoMorita from './images/morita_logo.png';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { login } from '../../services/Api/loginApi';
+import { login } from '../../shared/services/Api/loginApi';
 import { useHistory } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   root: {

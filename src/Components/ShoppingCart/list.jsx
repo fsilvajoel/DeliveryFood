@@ -10,7 +10,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 
 import { useDispatch } from 'react-redux';
-import { DeleteProduct } from '../../Redux/Store/CheckoutCart/CheckoutCart';
+import { DeleteProduct } from '../../shared/Redux/Store/CheckoutCart/CheckoutCart';
 import './style.scss';
 
 const useStyles = makeStyles((theme) => ({

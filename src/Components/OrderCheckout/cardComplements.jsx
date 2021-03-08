@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import styled from 'styled-components';
-import { getComplements } from '../../services/Api/productsApi';
+import { getComplements } from '../../shared/services/Api/productsApi';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 

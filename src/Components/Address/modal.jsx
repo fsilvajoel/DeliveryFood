@@ -6,7 +6,7 @@ import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
 import TextField from '@material-ui/core/TextField';
-import { getStorageItem } from '../../services/storage/index';
+import { getStorageItem } from '../../shared/storage/index';
 import { useForm } from 'react-hook-form';
 
 export default function ModalAdress(props) {

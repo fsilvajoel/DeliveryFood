@@ -2,7 +2,7 @@ import axios from 'axios';
 import { apiUrl, partner } from './apiConstants';
 
 export const getAllProductsData = async () => {
-  const response = await fetch(`${apiUrl}${partner}/produtos/`);
+  const response = await fetch(`${apiUrl}/parceiro/${partner}/produtos/`);
   const data = await response.json();
   // console.log(data)
   return data;

@@ -2,19 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducers from './Redux/index';
-import Routes from './services/Routes/routes';
+import reducers from './shared/Redux/index';
+import Routes from './core/Routes/routes';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 // import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
   palette: {
     primary: { main: '#000000' },
-    secondary: { main: '#ea1d2c' }
+    secondary: { main: '#ea1d2c' },
   },
   status: {
-    danger: 'orange'
-  }
+    danger: 'orange',
+  },
 });
 
 ReactDOM.render(

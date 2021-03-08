@@ -11,7 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ShoppingCart from '../../ShoppingCart';
 import Toolbar from '@material-ui/core/Toolbar';
 import logo from '../logo.png';
-import { logout } from '../../../modules/auth/autorization';
+import { logout } from '../../../core/auth/autorization';
 import SearchIcon from '@material-ui/icons/Search';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -20,7 +20,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import { useForm } from 'react-hook-form';
 import Button from '@material-ui/core/Button';
-import { getProductBySearch } from '../../../services/Api/productsApi';
+import { getProductBySearch } from '../../../shared/services/Api/productsApi';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
