@@ -34,22 +34,23 @@ export default function Review() {
         <Typography variant="h6" gutterBottom className={classes.title}>
           Produtos
         </Typography>
-        <li>Produto lala lala lala</li>
-        <li>Produto lala lala lala</li>
-        <li>Produto lala lala lala</li>
-        <li>Produto lala lala lala</li>
+        <li>Temaki Filadelfia</li>
+        <li>Uramaki pokemon</li>
+        <li>Temaki Filadelfia</li>
+        <li>Uramaki pokemon</li>
         <Typography variant="h6" gutterBottom className={classes.title}>
           Complementos
         </Typography>
-        <li>Complemento lala lala lala</li>
-        <li>Complemento lala lala lala</li>
+        <li>Complemento numero um</li>
+        <li>Complemento numero dois</li>
+        <li>Complemento numero tres</li>
       </Grid>
       <Grid item container direction="column" xs={12} sm={12}>
         <Typography variant="h6" gutterBottom>
           Revisão e Finalização
         </Typography>
         <Typography gutterBottom>
-          <b>Nome:</b> John Smith
+          <b>Nome:</b> Joel Silva
         </Typography>
         <Typography gutterBottom>
           <b>Endereço:</b> {addresses}

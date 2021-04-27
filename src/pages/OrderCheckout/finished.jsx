@@ -23,7 +23,7 @@ function Finished() {
         <img src={CircleCheck} />
       </Icon>
       <Typography variant="subtitle1">
-        O código do seu pedido é <b>#2001539</b>. Em breve estará em sua casa!
+        O código do seu pedido é <b>#2001539</b>. Em breve estará pronto!
       </Typography>
     </>
   );
